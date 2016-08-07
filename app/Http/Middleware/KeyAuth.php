@@ -6,7 +6,7 @@ namespace App\Http\Middleware;
 use App\APIAuth as APIAuth;
 use Closure;
 
-class Custom
+class KeyAuth
 {
     /**
      * Handle an incoming request.
