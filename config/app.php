@@ -165,6 +165,8 @@ return [
 
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
 
+        Zizaco\Entrust\EntrustServiceProvider::class,
+
     ],
 
     /*
@@ -211,6 +213,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 
     ],
 
