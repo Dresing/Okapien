@@ -68,8 +68,6 @@ class AuthController extends Controller
             $user = User::create([
                 'name' => $data['name'],
 
-                //Get the standard role.
-                'role_id' => Role::where('name', Role::$standardRole)->first()->id,
                 
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
