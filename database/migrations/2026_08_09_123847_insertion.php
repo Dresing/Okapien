@@ -16,21 +16,24 @@ class Insertion extends Migration
         /**
          *  Create Roles
          */
-        $admin = Role::create([
-            'name' => 'admin',
-            'display_name' => 'Administrator',
-            'description' => 'Adgang til alle funktioner.',
-        ]);
-        $teacher = Role::create([
-            'name' => 'teacher',
-            'display_name' => 'Lærer',
-            'description' => 'Begrænset adgang og administration over elever.',
-        ]);
-        $student = Role::create([
-            'name' => 'student',
-            'display_name' => 'Elev',
-            'description' => 'Begrænset adgang.',
-        ]);
+        $admin = new Role();
+        $admin->name         = 'admin';
+        $admin->display_name = 'Administrator'; // optional
+        $admin->description  = 'User is allowed to manage and edit other users'; // optional
+        $admin->save();
+
+        $teacher = new Role();
+        $teacher->name         = 'teacher';
+        $teacher->display_name = 'Lærer'; // optional
+        $teacher->description  = 'User is allowed to manage and view other users'; // optional
+        $teacher->save();
+
+        $student= new Role();
+        $student->name         = 'student';
+        $student->display_name = 'Elev'; // optional
+        $student->description  = 'User is allowed to view itself.'; // optional
+        $student->save();
+
         /**
          * Insert Users
          */

@@ -13,9 +13,9 @@
 					<div class="panel-heading">Home</div>
 
 					<div class="panel-body">
-						@if(App\User::is('Elev'))
-							Du er elev
-						@endif
+						@role('admin')
+							Du er admin
+						@endrole
 					</div>
 				</div>
 			</div>
