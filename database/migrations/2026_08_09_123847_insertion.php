@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use App\User;
 use App\Role;
+use App\Permission;
 
 class Insertion extends Migration
 {
@@ -60,6 +61,29 @@ class Insertion extends Migration
         ]);
 
         $user->attachRole($student);
+
+        /**
+         * Make Permission
+         */
+        $createCase = new Permission();
+        $createCase->name         = 'create-case';
+        $createCase->display_name = 'Lave cases'; // optional
+
+        $createCase->description  = 'Oprette nye cases.'; // optional
+        $createCase->save();
+
+        $readCase = new Permission();
+        $readCase->name         = 'read-case';
+        $readCase->display_name = 'Se cases'; // optional
+
+        $readCase->description  = 'Se åbne cases.'; // optional
+        $readCase->save();
+
+        $teacher->attachPermission($createCase);
+
+
+        $student->attachPermissions(array($readCase));
+
     }
 
     /**
