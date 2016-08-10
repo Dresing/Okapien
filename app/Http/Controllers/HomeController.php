@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\APIAuth;
 use App\User;
+use Illuminate\Support\Facades\Redirect;
 
 
 class HomeController extends Controller
@@ -26,6 +27,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home', ['keys' => APIAuth::all(), 'users' => User::all()]);
+        if(\Entrust::hasRole('student')):
+            return view('studentHome', ['keys' => APIAuth::all(), 'users' => User::all()]);
+        elseif(\Entrust::hasRole('teacher')):
+            return view('studentHome', ['keys' => APIAuth::all(), 'users' => User::all()]);
+        elseif(\Entrust::hasRole('admin')):
+            return view('studentHome', ['keys' => APIAuth::all(), 'users' => User::all()]);
+        endif;
+
+        return view('welcome');
+
     }
 }

@@ -1,3 +1,4 @@
+@ability('admin,teacher', '')
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
 
@@ -46,3 +47,4 @@
     </section>
     <!-- /.sidebar -->
 </aside>
+@endability

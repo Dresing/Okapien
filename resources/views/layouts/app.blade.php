@@ -36,8 +36,8 @@ desired effect
 
     @include('layouts.partials.sidebar')
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <!-- Content Wrapper. Contains page content. Remove margin if student is viewing. -->
+    <div class="content-wrapper" @role('student')style="margin-left: 0;"@endrole>
 
         @include('layouts.partials.contentheader')
 

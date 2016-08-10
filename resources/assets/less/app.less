@@ -1,8 +1,19 @@
 @import "bootstrap/bootstrap";
 
+/** Definition **/
+@main: #3c8dbc;
+
 @btn-font-weight: 300;
 @font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
 
 body, label, .checkbox label {
 	font-weight: 300;
+}
+
+.skin-blue .main-header .logo{
+	&:hover{
+		background-color: @main;
+		text-decoration: none;
+	}
+	background-color: @main;
 }
