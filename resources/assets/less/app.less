@@ -2,6 +2,8 @@
 
 /** Definition **/
 @main: #3c8dbc;
+@icon: #333;
+@seperation: #eee;
 
 @btn-font-weight: 300;
 @font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
@@ -9,7 +11,27 @@
 body, label, .checkbox label {
 	font-weight: 300;
 }
+footer{
+	position:fixed;
+	bottom:0;
+	width:100%;
+	left:0;
+}
+a{
+	color: @main;
+}
+.icon{
+	color: @icon;
+	margin: 0 15px;
 
+}
+.icon.active{
+	color: @main;
+}
+
+.box{
+	border: 1px solid @seperation;
+}
 .skin-blue .main-header .logo{
 	&:hover{
 		background-color: @main;
@@ -17,3 +39,5 @@ body, label, .checkbox label {
 	}
 	background-color: @main;
 }
+
+

@@ -1,9 +1,11 @@
 <!-- Main Footer -->
 <footer class="main-footer" @role('student')style="margin-left: 0;"@endrole>
-    <!-- To the right -->
-    <div class="pull-right hidden-xs">
-        <a href="https://github.com/acacha/adminlte-laravel"></a><b>admin-lte-laravel</b></a>. {{ trans('adminlte_lang::message.descriptionpackage') }}
+    <div class="row">
+        <div class="col-md-6 col-xs-12 col-md-offset-3">
+            <div class="center-block text-center">
+                <a href="#" class="icon active"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
+                <a href="#" class="icon"><i class="fa fa-users fa-2x" aria-hidden="true"></i></a>
+            </div>
+        </div>
     </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2015 <a href="http://acacha.org">Acacha.org</a>.</strong> {{ trans('adminlte_lang::message.createdby') }} <a href="http://acacha.org/sergitur">Sergi Tur Badenas</a>. {{ trans('adminlte_lang::message.seecode') }} <a href="https://github.com/acacha/adminlte-laravel">Github</a>
 </footer>

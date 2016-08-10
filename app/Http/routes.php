@@ -57,8 +57,8 @@ Route::group(['prefix' => 'ajax', 'middleware' => 'auth'], function(){
 	/**
 	 * For Students
 	 */
-	Route::group(['prefix' => 'student'], function(){
-
+	Route::group(['prefix' => 'student', 'middleware' => ['role:student']], function(){
+		Route::get('teachers', function(){});
 	});
 });
 

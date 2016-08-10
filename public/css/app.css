@@ -6212,6 +6212,25 @@ label,
 .checkbox label {
   font-weight: 300;
 }
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+}
+a {
+  color: #3c8dbc;
+}
+.icon {
+  color: #333;
+  margin: 0 15px;
+}
+.icon.active {
+  color: #3c8dbc;
+}
+.box {
+  border: 1px solid #eee;
+}
 .skin-blue .main-header .logo {
   background-color: #3c8dbc;
 }

@@ -28,14 +28,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    
     /**
-     * Checks if the authenticated user has curtain role. If it is the case, true is returned. False otherwise.
-     *
-     * @param $role String the name of the role which the authenticated user is checked against.
-     * @return bool whether the authenticated user indeed had that role.
+     * @return Illuminate\Database\Eloquent\Model
      */
-    public static function is($role){
-        return Role::where('id', Auth::user()->role_id)->first()->name === $role ? true : false;
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role');
     }
+
 }
