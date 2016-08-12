@@ -12,7 +12,7 @@
 				@foreach($teachers as $teacher)
 					@foreach($teachers as $teacher)
 						@foreach($teachers as $teacher)
-											<div class="col-md-4">
+											<div class="col-md-12">
 												<div class="box box-widget widget-user">
 													<!-- Add the bg color to the header using any of the bg-* classes -->
 													<div class="widget-user-header bg-black" style="background: url({{asset('/img/photo1.png')}}) center center;">

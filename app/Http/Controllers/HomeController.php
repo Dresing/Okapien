@@ -6,7 +6,9 @@ use App\Http\Requests;
 use App\APIAuth;
 use App\User;
 use App\Role;
-use Illuminate\Support\Facades\Redirect;
+use App\Teacher;
+use App\Student;
+use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends Controller
@@ -30,12 +32,12 @@ class HomeController extends Controller
     {
         if(\Entrust::hasRole('student')):
             return view('studentHome', [
-                'teachers' => Role::where('name', 'teacher')->first()->users()->get(), //Get all teachers
+                'teachers' => Role::where('name', 'teacher')->first()->users->get(), //Get all teachers
             ]);
         elseif(\Entrust::hasRole('teacher')):
             return view('studentHome', ['keys' => APIAuth::all(), 'users' => User::all()]);
         elseif(\Entrust::hasRole('admin')):
-            return view('studentHome', ['keys' => APIAuth::all(), 'users' => User::all()]);
+            return view('adminHome', ['keys' => APIAuth::all(), 'user' => User::all()]);
         endif;
 
         return view('welcome');

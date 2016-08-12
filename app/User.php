@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use App\Teacher;
+use pp\Student;
 
 class User extends Authenticatable
 {
@@ -17,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role_id',
+        'name', 'email', 'password', 'role_id', 'userable_id', 'userable_type',
     ];
 
     /**
@@ -37,4 +39,12 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role');
     }
 
+    /**
+     * Get the model acosiated with the user e.g. Teacher/Student
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function userable()
+    {
+        return $this->morphTo();
+    }
 }

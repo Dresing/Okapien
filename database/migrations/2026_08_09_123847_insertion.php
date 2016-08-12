@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use App\User;
 use App\Role;
 use App\Permission;
+use App\Student;
+use App\Teacher;
+use App\Collection;
 
 class Insertion extends Migration
 {
@@ -36,31 +39,58 @@ class Insertion extends Migration
         $student->save();
 
         /**
+         * Make Collections
+         */
+
+        $class = Collection::create([
+            'name' => '5.b',
+        ]);
+
+        /**
          * Insert Users
          */
+        $user = Teacher::create();
         $user = User::create([
             'name' => 'Mr. Admin',
             'email' => 'admin@copus.dk',
             'password' => bcrypt('123456'),
+            'userable_id' => $user->id,
+            'userable_type' => get_class($user),
         ]);
 
         $user->attachRole($admin);
 
+
+        $user = Teacher::create();
         $user = User::create([
             'name' => 'Mr. Teacher',
             'email' => 'teacher@copus.dk',
             'password' => bcrypt('123456'),
+            'userable_id' => $user->id,
+            'userable_type' => get_class($user),
         ]);
+
 
         $user->attachRole($teacher);
 
+        $user = Student::create();
+        DB::table('collection_student')->insert(
+            array(
+                'collection_id' => $user->id,
+                'student_id' => $class->id
+            )
+        );
         $user = User::create([
             'name' => 'Mr. Student',
             'email' => 'student@copus.dk',
             'password' => bcrypt('123456'),
+            'userable_id' => $user->id,
+            'userable_type' => get_class($user),
         ]);
 
         $user->attachRole($student);
+
+
 
         /**
          * Make Permission
@@ -83,6 +113,7 @@ class Insertion extends Migration
 
 
         $student->attachPermissions(array($readCase));
+
 
     }
 

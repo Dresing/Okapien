@@ -13,9 +13,7 @@
 					<div class="panel-heading">Home</div>
 
 					<div class="panel-body">
-						@role('admin')
-							Du er admin
-						@endrole
+
 					</div>
 				</div>
 			</div>
