@@ -30,16 +30,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(\Entrust::hasRole('student')):
+        if (Auth::user()->is('Student')):
             return view('studentHome', [
-                'teachers' => Role::where('name', 'teacher')->first()->users->get(), //Get all teachers
+                'teachers' => User::all(), //Get all teachers
             ]);
-        elseif(\Entrust::hasRole('teacher')):
-            return view('studentHome', ['keys' => APIAuth::all(), 'users' => User::all()]);
-        elseif(\Entrust::hasRole('admin')):
-            return view('adminHome', ['keys' => APIAuth::all(), 'user' => User::all()]);
-        endif;
+        elseif (Auth::user()->is('Teacher')):
+            return view('teacherHome', ['user' => Auth::user()]);
 
+        endif;
         return view('welcome');
 
     }

@@ -7,6 +7,7 @@ use App\Permission;
 use App\Student;
 use App\Teacher;
 use App\Collection;
+use App\Topic;
 
 class Insertion extends Migration
 {
@@ -45,23 +46,22 @@ class Insertion extends Migration
         $class = Collection::create([
             'name' => '5.b',
         ]);
+        $topic = Topic::create([
+            'name' => 'Matematik',
+        ]);
 
         /**
          * Insert Users
          */
-        $user = Teacher::create();
-        $user = User::create([
-            'name' => 'Mr. Admin',
-            'email' => 'admin@copus.dk',
-            'password' => bcrypt('123456'),
-            'userable_id' => $user->id,
-            'userable_type' => get_class($user),
-        ]);
-
-        $user->attachRole($admin);
-
 
         $user = Teacher::create();
+        DB::table('collection_teacher_topic')->insert(
+            array(
+                'collection_id' => $class->id,
+                'teacher_id' => $user->id,
+                'topic_id' => $topic->id,
+            )
+        );
         $user = User::create([
             'name' => 'Mr. Teacher',
             'email' => 'teacher@copus.dk',
@@ -76,8 +76,8 @@ class Insertion extends Migration
         $user = Student::create();
         DB::table('collection_student')->insert(
             array(
-                'collection_id' => $user->id,
-                'student_id' => $class->id
+                'collection_id' => $class->id,
+                'student_id' => $user->id
             )
         );
         $user = User::create([

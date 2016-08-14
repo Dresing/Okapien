@@ -47,4 +47,24 @@ class User extends Authenticatable
     {
         return $this->morphTo();
     }
+
+    /**
+     * Find whether the current logged-in user is af a curtain type.
+     * @param $type The type to check against.
+     * @return bool If the user is indeed of the request type, true is returned. False otherwise.
+     */
+    public function is($type){
+        if($this->userable_type === "App\\".$type){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Get the user type.
+     * @return string
+     */
+    public function type(){
+        return str_replace("App\\", "", $this->userable_type);
+    }
 }

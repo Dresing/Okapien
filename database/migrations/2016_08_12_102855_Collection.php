@@ -18,6 +18,11 @@ class Collection extends Migration
             $table->string('name');
             $table->timestamps();
         });
+        Schema::create('topics', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
+        });
         Schema::create('collection_student', function (Blueprint $table) {
             $table->integer('collection_id')->unsigned();
             $table->integer('student_id')->unsigned();
@@ -29,13 +34,16 @@ class Collection extends Migration
 
             $table->primary(['collection_id', 'student_id']);
         });
-        Schema::create('collection_teacher', function (Blueprint $table) {
+        Schema::create('collection_teacher_topic', function (Blueprint $table) {
             $table->integer('collection_id')->unsigned();
             $table->integer('teacher_id')->unsigned();
+            $table->integer('topic_id')->unsigned();
 
             $table->foreign('collection_id')->references('id')->on('collections')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('teacher_id')->references('id')->on('teachers')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('topic_id')->references('id')->on('topics')
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->primary(['collection_id', 'teacher_id']);
@@ -51,7 +59,8 @@ class Collection extends Migration
     {
 
         Schema::drop('collection_student');
-        Schema::drop('collection_teacher');
+        Schema::drop('collection_teacher_topic');
+        Schema::drop('topics');
         Schema::drop('collections');
     }
 }
