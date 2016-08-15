@@ -6231,6 +6231,13 @@ a {
 .icon.active {
   color: #3c8dbc;
 }
+a.no-effect {
+  color: #3c8dbc;
+}
+a.no-effect:hover {
+  text-decoration: none;
+  color: #3c8dbc;
+}
 .box {
   border: 1px solid #eee;
 }

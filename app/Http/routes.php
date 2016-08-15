@@ -14,9 +14,10 @@
 
 Route::auth();
 
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
-
+Route::get('/', 'HomeController@index')->middleware('auth');
+Route::get('/home', 'HomeController@index')->middleware('auth');
+Route::get('klasse/{id}', 'CollectionController@collectionProfile')->middleware('auth');
+Route::get('klasse/{id}/fag/{topicID}', 'CollectionController@TopicProfile')->middleware('auth');
 
 /**
  * API Routes

@@ -49,7 +49,9 @@ class Insertion extends Migration
         $topic = Topic::create([
             'name' => 'Matematik',
         ]);
-
+        $topic2 = Topic::create([
+            'name' => 'Dansk',
+        ]);
         /**
          * Insert Users
          */
@@ -72,6 +74,7 @@ class Insertion extends Migration
 
 
         $user->attachRole($teacher);
+   
 
         $user = Student::create();
         DB::table('collection_student')->insert(

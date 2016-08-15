@@ -31,7 +31,13 @@ a{
 .icon.active{
 	color: @main;
 }
-
+a.no-effect{
+	color: @main;
+	&:hover{
+		text-decoration: none;
+		color: @main;
+	}
+}
 .box{
 	border: 1px solid @seperation;
 }

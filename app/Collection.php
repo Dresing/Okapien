@@ -13,12 +13,16 @@ class Collection extends Model{
     protected $fillable = [
         'name'
     ];
-    public function topic()
+    public function topics()
     {
         return $this->belongsToMany('App\Topic', 'collection_teacher_topic');
     }
 
     public function students(){
-        return $this->hasMany('App\Student');
+        return $this->belongsToMany('App\Student');
+    }
+
+    public function teachers(){
+        return $this->belongsToMany('App\Teacher', 'collection_teacher_topic');
     }
 }

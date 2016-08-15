@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\APIAuth;
+use App\Collection;
 use App\User;
 use App\Role;
 use App\Teacher;
@@ -13,15 +14,6 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -30,15 +22,26 @@ class HomeController extends Controller
      */
     public function index()
     {
+        /**
+         * If student is requesting
+         */
         if (Auth::user()->is('Student')):
-            return view('studentHome', [
+            return view('student.home', [
                 'teachers' => User::all(), //Get all teachers
             ]);
+
+        /**
+         * If teacher is requesting
+         */
         elseif (Auth::user()->is('Teacher')):
-            return view('teacherHome', ['user' => Auth::user()]);
+            return view('teacher.home', ['user' => Auth::user()]);
 
         endif;
-        return view('welcome');
+
+        /**
+         *  This should never occour unless an error is present. Send them to the login-page.
+         */
+        return view('auth.login');
 
     }
 }
