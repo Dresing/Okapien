@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 use App\Http\Requests;
 use App\Collection;
@@ -20,6 +20,12 @@ class CollectionController extends Controller
     public function collectionProfile($id)
     {
         $collection = Collection::find($id);
+
+        /**
+         * Bad Request
+         */
+        ($collection === null) ? App::abort(404) :  '';
+
         /**
          * If student is requesting
          */
@@ -46,6 +52,8 @@ class CollectionController extends Controller
          */
         return view('auth.login');
     }
+
+
     /**
      * Generates a collection profile based on a topic.
      *
@@ -56,6 +64,11 @@ class CollectionController extends Controller
     {
         $collection = Collection::find($id);
         $topic = Topic::find($topicID);
+
+        /**
+         * Bad Request
+         */
+        ($collection === null || $topic === null) ? App::abort(404) :  '';
         /**
          * If student is requesting
          */

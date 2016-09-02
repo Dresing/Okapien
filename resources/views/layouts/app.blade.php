@@ -34,28 +34,28 @@ desired effect
 
     @include('layouts.partials.mainheader')
 
-    @include('layouts.partials.sidebar')
+    {{--  @include('layouts.partials.sidebar') --}}
 
-    <!-- Content Wrapper. Contains page content. Remove margin if student is viewing. -->
-    <div class="content-wrapper" @role('student')style="margin-left: 0;"@endrole>
+<!-- Content Wrapper. Contains page content. Remove margin if student is viewing. -->
+<div class="content-wrapper" style="padding-bottom: 50px; margin-left: 0;">
 
-        @include('layouts.partials.contentheader')
+    @include('layouts.partials.contentheader')
 
-        <!-- Main content -->
-        <section class="content">
-            <!-- Your Page Content Here -->
-            @yield('main-content')
-        </section><!-- /.content -->
-    </div><!-- /.content-wrapper -->
+    <!-- Main content -->
+    <section class="content">
+        <!-- Your Page Content Here -->
+        @yield('main-content')
+    </section><!-- /.content -->
+</div><!-- /.content-wrapper -->
 
-    @include('layouts.partials.controlsidebar')
+@include('layouts.partials.controlsidebar')
 
-    @include('layouts.partials.footer')
+@include('layouts.partials.footer')
 
 </div><!-- ./wrapper -->
 
 @section('scripts')
-    @include('layouts.partials.scripts')
+@include('layouts.partials.scripts')
 @show
 
 </body>

@@ -7,6 +7,9 @@
 
 @section('main-content')
 	<div class="container spark-screen">
+		<div class="row bottom-buffer">
+			<h1 class="text-center">Mine klasser</h1>
+		</div>
 		<div class="row">
 			@foreach($teachers as $teacher)
 				@foreach($teachers as $teacher)

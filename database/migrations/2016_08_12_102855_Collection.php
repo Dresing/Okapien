@@ -35,6 +35,7 @@ class Collection extends Migration
             $table->primary(['collection_id', 'student_id']);
         });
         Schema::create('collection_teacher_topic', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('collection_id')->unsigned();
             $table->integer('teacher_id')->unsigned();
             $table->integer('topic_id')->unsigned();
@@ -46,7 +47,6 @@ class Collection extends Migration
             $table->foreign('topic_id')->references('id')->on('topics')
                 ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->primary(['collection_id', 'teacher_id']);
         });
     }
 

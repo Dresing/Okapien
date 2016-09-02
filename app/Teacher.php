@@ -41,7 +41,7 @@ class Teacher extends Model
             }
         }
         else{
-            if (DB::table('collection_teacher_topic')->where('collection_id', $collection->id)
+            if (Ownership::where('collection_id', $collection->id)
                     ->where('teacher_id', $this->id)->where('topic_id', $topic->id)->count() > 0) {
                     return true;
             }

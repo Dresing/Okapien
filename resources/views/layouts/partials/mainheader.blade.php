@@ -1,22 +1,20 @@
 <!-- Main Header -->
 <header class="main-header">
+    <!-- Sidebar toggle button-->
 
     <!-- Logo -->
-    <a href="{{ url('/home') }}" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>O</b></span>
-        <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Okapi</b></span>
-    </a>
+
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
-        <!-- Sidebar toggle button-->
-        @ability('admin,teacher', '')
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        {{--<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">{{ trans('adminlte_lang::message.togglenav') }}</span>
+        </a>--}}
+        <a href="{{ url('/home') }}" class="logo">
+
+            <!-- logo for regular state and mobile devices -->
+            <img style="height: 35px;" src="{{asset('img/internal/logo.png')}}"/>
         </a>
-        @endability
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
