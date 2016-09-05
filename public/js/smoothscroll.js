@@ -1,4 +1,4 @@
-/**
+console.log('hey');/**
  * SmoothScroll
  * This helper script created by DWUser.com.  Copyright 2013 DWUser.com.  
  * Dual-licensed under the GPL and MIT licenses.  

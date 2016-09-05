@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ownership extends Model
+class Team extends Model
 {
     protected $table = 'collection_teacher_topic';
 

@@ -5034,9 +5034,15 @@ fieldset[disabled] .btn-yahoo.active {
 .content {
   padding: 0px;
 }
+.main-footer {
+  border-top: 1px solid #eee;
+}
 .skin-blue .main-header {
   padding: 0 15px !important;
   background: #3c1f5e !important;
+  max-height: 50px;
+  position: fixed;
+  width: 100%;
 }
 .skin-blue .main-header .sidebar-toggle {
   padding-right: 30px;
@@ -5048,10 +5054,16 @@ fieldset[disabled] .btn-yahoo.active {
   background-color: #3c1f5e !important;
   text-decoration: none;
 }
+@media (max-width: 768px) {
+  .skin-blue .main-header .navbar-custom-menu {
+    margin-top: -50px;
+  }
+}
 .skin-blue .main-header .navbar {
   background-color: #3c1f5e;
   margin-left: 0;
   padding: 0 15px;
+  max-height: 50px;
 }
 .skin-blue .main-header .logo {
   background-color: #3c1f5e;
@@ -5123,16 +5135,78 @@ fieldset[disabled] .btn-yahoo.active {
     max-width: calc(100% - 480spx);
   }
 }
+.left-sidebar .option-panel {
+  z-index: 2;
+  width: calc(100% - 240px);
+  height: 50px;
+  background: #fff;
+  position: fixed;
+  right: 0;
+  top: 50px;
+  border-bottom: 1px solid #eee;
+  border-left: 1px solid #eee;
+  padding-left: 65px;
+  padding-right: 65px;
+}
+@media (max-width: 1200px) {
+  .left-sidebar .option-panel {
+    width: calc(100% - 240px);
+  }
+}
+@media (max-width: 992px) {
+  .left-sidebar .option-panel {
+    width: calc(100% - 60px);
+  }
+}
+@media (max-width: 768px) {
+  .left-sidebar .option-panel {
+    width: calc(100% - 60px);
+  }
+}
+@media (max-width: 480px) {
+  .left-sidebar .option-panel {
+    width: calc(100% - 60px);
+  }
+}
+.left-sidebar .option-panel button {
+  width: 120px;
+  padding: 0;
+  height: 100%;
+  border-radius: 30px;
+}
+.left-sidebar .option-panel h2 {
+  display: inline-block;
+  line-height: 30px;
+  margin: 0;
+}
 .left-sidebar .full-height {
   position: fixed;
   height: calc(100vh - 110px);
   margin: 0 ;
   width: 240px;
   top: 50px;
+  z-index: 3;
+  border: none;
+  border-radius: 0;
 }
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
   .left-sidebar .full-height {
     width: 240px;
+  }
+}
+@media (max-width: 992px) {
+  .left-sidebar .full-height {
+    width: 60px;
+  }
+}
+@media (max-width: 768px) {
+  .left-sidebar .full-height {
+    width: 60px;
+  }
+}
+@media (max-width: 480px) {
+  .left-sidebar .full-height {
+    width: 60px;
   }
 }
 .left-sidebar .container {
@@ -5140,24 +5214,30 @@ fieldset[disabled] .btn-yahoo.active {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 150px;
+  width: calc(100% - 340px);
+  margin-left: 290px;
 }
-@media (min-width: 768px) {
+@media (max-width: 480px) {
   .left-sidebar .container {
-    width: 750px;
+    width: calc(100% - 100px);
+    margin-left: 80px;
   }
 }
-@media (min-width: 992px) {
+@media (max-width: 768px) {
   .left-sidebar .container {
-    width: 970px;
+    width: calc(100% - 100px);
+    margin-left: 80px;
   }
 }
-@media (min-width: 1200px) {
+@media (max-width: 992px) {
   .left-sidebar .container {
-    width: calc(100% - 480spx);
-    margin-left: 290px;
+    width: calc(100% - 100px) !important;
+    margin-left: 80px !important;
   }
 }
 /** Definition **/
+@dist = 50;
 body,
 label,
 .checkbox label {
@@ -5213,8 +5293,23 @@ a.no-effect:hover {
   background: #3c1f5e;
   border-color: transparent;
 }
+.chat {
+  height: calc(100vh - 150px);
+}
 .chat .item {
   position: relative;
+}
+@media (max-width: 992px) {
+  .chat .item {
+    border: none;
+  }
+  .chat .item .message {
+    display: none;
+  }
+  .chat .item .img {
+    width: 30px;
+    height: 30px;
+  }
 }
 .chat .item img {
   border-color: transparent !important;
@@ -5232,6 +5327,36 @@ a.no-effect:hover {
 }
 .chat .offline .status {
   background: #dd4b39;
+}
+.plain {
+  position: absolute;
+  background: #3c1f5e;
+  width: 100%;
+  height: 100vh;
+}
+.login-box {
+  position: absolute;
+  /* IE 9 */
+  /* Safari */
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  margin: 0;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track-piece {
+  background: #eee;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #3c1f5e;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  cusor: pointer;
 }
 
 /*# sourceMappingURL=app.css.map */

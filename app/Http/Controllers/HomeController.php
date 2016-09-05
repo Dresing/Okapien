@@ -27,7 +27,7 @@ class HomeController extends Controller
          */
         if (Auth::user()->is('Student')):
             return view('student.home', [
-                'teachers' => User::all(), //Get all teachers
+                'teachers' => Teacher::all(), //Get all teachers
             ]);
 
         /**

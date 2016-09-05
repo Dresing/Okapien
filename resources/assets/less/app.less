@@ -3,11 +3,14 @@
 @import "custom/header.less";
 @import "custom/boxes.less";
 @import "custom/templates/loader.less";
+@import "secondary.less";
 
 /** Definition **/
 @main: #3c1f5e;
 @icon: #333;
 @seperation: #eee;
+
+@dist = 50;
 
 @btn-font-weight: 300;
 @font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
@@ -62,9 +65,21 @@ a.no-effect{
 	}
 }
 .chat{
+	height: ~"calc(100vh - 150px)";
 	.item {
+		@media (max-width: @screen-md-min) {
+			.message{
+				display:none;
+			}
+			.img{
+				width: 30px;
+				height: 30px;
+			}
+			border:none;
+		}
 		position:relative;
 		img {
+
 			border-color: transparent !important;
 		}
 		.status {
@@ -88,5 +103,35 @@ a.no-effect{
 	}
 }
 
+.plain{
+	position:absolute;
+	background: @main;
+	width:100%;
+	height:100vh;
+}
+.login-box{
+	position:absolute;
+	-ms-transform: translate(-50%, -50%); /* IE 9 */
+	-webkit-transform: translate(-50%, 50%); /* Safari */
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	margin: 0;
+}
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+::-webkit-scrollbar-track-piece {
+	background: #eee;
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+	background: @main;
+	border-radius: 10px;
+	&:hover{
+		cusor: pointer;
+	}
+}
 
 

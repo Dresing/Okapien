@@ -12,15 +12,12 @@
 		</div>
 		<div class="row">
 			@foreach($teachers as $teacher)
-				@foreach($teachers as $teacher)
-					@foreach($teachers as $teacher)
-						@foreach($teachers as $teacher)
 											<div class="col-md-12">
 												<div class="box box-widget widget-user">
 													<!-- Add the bg color to the header using any of the bg-* classes -->
 													<div class="widget-user-header bg-black" style="background: url({{asset('/img/photo1.png')}}) center center;">
-														<h3 class="widget-user-username">{{$teacher->name}}</h3>
-														<h5 class="widget-user-desc">{{$teacher->email}}</h5>
+														<h3 class="widget-user-username">{{$teacher->user->name}}</h3>
+														<h5 class="widget-user-desc">{{$teacher->user->email}}</h5>
 													</div>
 													<div class="widget-user-image">
 														<img class="img-circle" src="{{asset('/img/user4-128x128.jpg')}}" alt="User Avatar">
@@ -54,9 +51,6 @@
 													</div>
 												</div>
 											</div>
-						@endforeach
-					@endforeach
-				@endforeach
 			@endforeach
 		</div>
 	</div>

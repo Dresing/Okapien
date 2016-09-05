@@ -5,10 +5,10 @@
 @endsection
 
 @section('content')
-<body class="hold-transition login-page">
+<body class="hold-transition login-page plain">
     <div class="login-box">
-        <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>Admin</b>LTE</a>
+        <div class="login-logo" style="width: 200px;display:block;margin: 0 auto 10px auto;">
+            <a href="{{ url('/home') }}"><img style="width: 100%;" src="{{asset('img/internal/logo.png')}}"\></a>
         </div><!-- /.login-logo -->
 
     @if (count($errors) > 0)
@@ -23,7 +23,7 @@
     @endif
 
     <div class="login-box-body">
-    <p class="login-box-msg"> {{ trans('adminlte_lang::message.siginsession') }} </p>
+
     <form action="{{ url('/login') }}" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group has-feedback">
@@ -48,7 +48,7 @@
         </div>
     </form>
 
-    @include('auth.partials.social_login')
+
 
     <a href="{{ url('/password/reset') }}">{{ trans('adminlte_lang::message.forgotpassword') }}</a><br>
     <a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.registermember') }}</a>
