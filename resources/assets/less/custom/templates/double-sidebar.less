@@ -1,0 +1,32 @@
+.double-sidebar{
+  .full-height{
+    position:fixed;
+    height: calc(~"100vh -" (@navbar-height+60px));
+    margin: 0 ;
+    width: 240px;
+    top: @navbar-height;
+    @media (min-width: @screen-lg-min) {
+      width: 240px;
+    }
+  }
+  .full-height.left{ left: 0;}
+  .full-height.right{ right: 0;}
+
+
+  .container {
+    .container-fixed();
+
+    @media (min-width: @screen-sm-min) {
+      width: @container-sm;
+      max-width: @container-sm - 400;
+    }
+    @media (min-width: @screen-md-min) {
+      width: @container-md;
+      max-width: @container-md - 150;
+    }
+    @media (min-width: @screen-lg-min) {
+      width: @container-lg;
+      max-width: ~"calc(100% - 480spx)";
+    }
+  }
+}

@@ -17,7 +17,7 @@ class ApiKeys extends Migration
 			$table->integer('user_id')->unsigned();
 			$table->string('api_key', 60)->unique();
 			$table->string('secret', 60);
-			$table->foreign('user_id')->references('id')->on('users');
+			$table->foreign('user_id')->references('id')->on('users')->cascade();
             $table->timestamps();
 			
 		});

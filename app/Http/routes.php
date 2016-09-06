@@ -11,14 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
-
+Route::get('/', 'HomeController@index')->middleware('auth');
+Route::get('/home', 'HomeController@index')->middleware('auth');
+Route::get('klasse/{id}', 'CollectionController@collectionProfile')->middleware('auth');
+Route::get('klasse/{id}/fag/{topicID}', 'CollectionController@TopicProfile')->middleware('auth');
 
 /**
  * API Routes
@@ -59,8 +58,8 @@ Route::group(['prefix' => 'ajax', 'middleware' => 'auth'], function(){
 	/**
 	 * For Students
 	 */
-	Route::group(['prefix' => 'student'], function(){
-
+	Route::group(['prefix' => 'student', 'middleware' => ['role:student']], function(){
+		Route::get('teachers', function(){});
 	});
 });
 

@@ -1,0 +1,39 @@
+
+
+.skin-blue .main-header {
+  padding: 0 15px !important;
+  background: @main !important;
+  max-height: 50px;
+  position:fixed;
+  width: 100%;
+  .sidebar-toggle{
+    &:hover, &:focus{
+      background-color: @main !important;
+      text-decoration: none;
+    }
+
+    padding-right: 30px;
+    padding-left: 30px;
+    color: #fff;
+  }
+  .navbar-custom-menu{
+    @media (max-width: @screen-sm-min) {
+      margin-top: -50px;
+    }
+  }
+  .navbar{
+    background-color: @main;
+    margin-left: 0;
+    padding: 0 15px;
+    max-height: 50px;
+  }
+  .logo {
+    &:hover {
+      background-color: @main !important;
+      text-decoration: none;
+    }
+    background-color: @main;
+    width: auto;
+    padding: 0;
+  }
+}
