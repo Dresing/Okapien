@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Collection;
 use App\Topic;
 use Illuminate\Support\Facades\Auth;
+use App\Team;
 
 class CollectionController extends Controller
 {
@@ -82,10 +83,14 @@ class CollectionController extends Controller
          */
         elseif (Auth::user()->is('Teacher')):
 
+            //Get the team
 
+
+            
             return view('teacher.collection', [
                 'owner' => Auth::user()->userable->teaches($collection, $topic),
-                'collection' => $collection
+                'collection' => $collection,
+                'team' => Team::determine(Auth::user()->userable, $collection, $topic),
             ]);
 
         endif;

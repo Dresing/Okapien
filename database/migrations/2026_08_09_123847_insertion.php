@@ -8,6 +8,10 @@ use App\Student;
 use App\Teacher;
 use App\Collection;
 use App\Topic;
+use App\Qualitative;
+use App\CaseModel;
+use App\Team;
+
 
 class Insertion extends Migration
 {
@@ -57,13 +61,11 @@ class Insertion extends Migration
          */
 
         $user = Teacher::create();
-        DB::table('collection_teacher_topic')->insert(
-            array(
+        $team = Team::create([
                 'collection_id' => $class->id,
                 'teacher_id' => $user->id,
-                'topic_id' => $topic->id,
-            )
-        );
+                'topic_id' => $topic->id
+        ]);
         $user = User::create([
             'name' => 'Mr. Teacher',
             'email' => 'teacher@copus.dk',
@@ -117,7 +119,15 @@ class Insertion extends Migration
 
         $student->attachPermissions(array($readCase));
 
+        /* Test evaluering*/
+        $qual = Qualitative::create();
 
+        CaseModel::create([
+            'name' => 'Hello, World!',
+            'team_id' => 1,
+            'uniquecase_id' => $qual->id,
+            'uniquecase_type' => get_class($qual),
+        ]);
     }
 
     /**

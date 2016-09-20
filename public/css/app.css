@@ -5082,6 +5082,7 @@ fieldset[disabled] .btn-yahoo.active {
   display: block;
   margin-top: 0;
   margin-bottom: 5px;
+  overflow-wrap: break-word;
 }
 .simple-box .btn {
   margin-top: 5px;
@@ -5293,6 +5294,9 @@ a.no-effect:hover {
   background: #3c1f5e;
   border-color: transparent;
 }
+.content-wrapper {
+  min-height: 100vh !important;
+}
 .chat {
   height: calc(100vh - 150px);
 }
@@ -5357,6 +5361,12 @@ a.no-effect:hover {
 }
 ::-webkit-scrollbar-thumb:hover {
   cusor: pointer;
+}
+.modal-content {
+  max-width: 100%;
+  width: 600px;
+  display: block;
+  margin: auto;
 }
 
 /*# sourceMappingURL=app.css.map */

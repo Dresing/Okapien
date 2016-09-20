@@ -12,7 +12,12 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.scripts(['test.js']);
+    mix.scripts([
+        'main.js',
+        'notifications.js',
+        'modals/case.js',
+        'ajax/post.js'
+    ]);
     mix.less('app.less');
     mix.less('admin-lte/AdminLTE.less');
     mix.less('bootstrap/bootstrap.less');
