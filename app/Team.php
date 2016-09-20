@@ -7,9 +7,37 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     protected $table = 'collection_teacher_topic';
-
+    protected $fillable = [
+        'collection_id', 'teacher_id', 'topic_id',
+    ];
+    public $timestamps = false;
 
     public function cases(){
-        return $this->belongsToMany('App\CaseModel');
+        return $this->hasMany('App\CaseModel');
     }
+    public function test(){
+        return "abr";
+    }
+
+    /**
+     * Select a Team based on a Teacher, Student and Topic object.
+     * @param Teacher $teacher
+     * @param Collection $collection
+     * @param Topic $topic
+     */
+   public static function determine(Teacher $teacher, Collection $collection, Topic $topic){
+        //return Team::where('teacher_id', $teacher->id)->where('collection_id', $collection->id)->where('topic_id', $topic->id)->first();
+        return Team::find(1);
+   }
+
+    /**
+     * Determine if a teacher teaches this team.
+     *
+     * @param Teacher $teacher
+     * @return bool
+     */
+    public function hasTeacher(Teacher $teacher){
+        return ($this->teacher_id === $teacher->id ? true : false);
+    }
+
 }

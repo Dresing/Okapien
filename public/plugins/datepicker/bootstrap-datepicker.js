@@ -1459,7 +1459,7 @@
 			var separators = format.replace(this.validParts, '\0').split('\0'),
 				parts = format.match(this.validParts);
 			if (!separators || !separators.length || !parts || parts.length === 0){
-				throw new Error("Invalid date format.");
+				throw new Error("Ugyldigt dato format.");
 			}
 			return {separators: separators, parts: parts};
 		},

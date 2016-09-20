@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class CaseModel extends Model
 {
-
+    protected $table = "cases";
     protected $fillable = [
-        'name', 'uniquecase_id', 'uniquecase_type',
+        'name', 'team_id' ,'uniquecase_id', 'uniquecase_type',
     ];
+    
     /**
      * Get the model acosiated with the user e.g. Qualitative/Multiple
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
@@ -20,7 +21,8 @@ class CaseModel extends Model
     }
 
     /**
-     * Find whether this instance is of a curtain type.
+     * Find whether this instance is of a curtain type.php
+     * 
      * @param $type The type to check against.
      * @return bool If there is a match in the type, true is returned. False otherwise.
      */
