@@ -5021,7 +5021,7 @@ $.extend(Datepicker.prototype, {
 
 		date = this._daylightSavingAdjust(new Date(year, month - 1, day));
 		if (date.getFullYear() !== year || date.getMonth() + 1 !== month || date.getDate() !== day) {
-			throw "Invalid date"; // E.g. 31/02/00
+			throw "Ugyldig dato"; // E.g. 31/02/00
 		}
 		return date;
 	},
@@ -5285,7 +5285,7 @@ $.extend(Datepicker.prototype, {
 			newDate = (date == null || date === "" ? defaultDate : (typeof date === "string" ? offsetString(date) :
 				(typeof date === "number" ? (isNaN(date) ? defaultDate : offsetNumeric(date)) : new Date(date.getTime()))));
 
-		newDate = (newDate && newDate.toString() === "Invalid Date" ? defaultDate : newDate);
+		newDate = (newDate && newDate.toString() === "Ugyldig dato" ? defaultDate : newDate);
 		if (newDate) {
 			newDate.setHours(0);
 			newDate.setMinutes(0);

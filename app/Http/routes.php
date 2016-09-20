@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -19,23 +19,14 @@ Route::get('/home', 'HomeController@index')->middleware('auth');
 Route::get('klasse/{id}', 'CollectionController@collectionProfile')->middleware('auth');
 Route::get('klasse/{id}/fag/{topicID}', 'CollectionController@TopicProfile')->middleware('auth');
 
+
 /**
- * API Routes
+ * Ajax Callse
  */
 Route::group(['prefix' => 'api/v1', 'middleware' => 'api'], function(){
-	Route::get('/', function(){
-		return ['status' => 'Authorized'];
-	});
-	Route::get('users/{id?}', function($id = null){
-		if($id == null) {
-			return ['users' => App\User::all()];
-		}
-		else{
-			return ['users' => App\User::where('id', $id)->get()];
-		}
-	});
 
 });
+
 
 Route::get('feedme', function(){
 	$key = '123';
@@ -46,20 +37,15 @@ Route::get('feedme', function(){
 /**
  * Routes for Ajax-calls (Behind the scene)
  */
-Route::group(['prefix' => 'ajax', 'middleware' => 'auth'], function(){
+Route::group(['prefix' => 'api', 'middleware' => ['auth']], function(){
 
+	Route::get('/', function(){})->name('api');
 	/**
-	 * For Teachers
+	 * Case handling
 	 */
-	Route::group(['prefix' => 'teacher'], function(){
-		Route::get('/', function(){return "hej";});
+	Route::group(['prefix' => 'case'], function(){
+		Route::post('add', 'AjaxController@addCase');
 	});
 
-	/**
-	 * For Students
-	 */
-	Route::group(['prefix' => 'student', 'middleware' => ['role:student']], function(){
-		Route::get('teachers', function(){});
-	});
 });
 

@@ -144,12 +144,12 @@
             this.separator = ' - ';
 
             this.locale = {
-                applyLabel: 'Apply',
-                cancelLabel: 'Cancel',
-                fromLabel: 'From',
-                toLabel: 'To',
-                weekLabel: 'W',
-                customRangeLabel: 'Custom Range',
+                applyLabel: 'Sæt',
+                cancelLabel: 'Annulér',
+                fromLabel: 'Fra',
+                toLabel: 'Til',
+                weekLabel: 'U',
+                customRangeLabel: 'Valgfri rækkevidde',
                 daysOfWeek: moment.weekdaysMin(),
                 monthNames: moment.monthsShort(),
                 firstDay: moment.localeData()._week.dow

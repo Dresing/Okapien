@@ -13,6 +13,7 @@
             </div>
             <div class="slimScrollDiv" style="position: relative; ovreflow:hidden; width: auto;"><div class="box-body chat" id="chat-box" style="overflow: auto; padding-right: 15px;width: auto;">
                     <!-- chat item -->
+
                     @foreach($collection->students as $student)
                     <div class="item seperation-border offline">
                         <img src="{{asset('/img/user1-128x128.jpg')}}" alt="user image"><div class="status"></div></img>
@@ -34,63 +35,36 @@
         </div>
         <div class="option-panel box-header">
             <h2>Evalueringer</h2>
-            <button type="button" class="btn btn-block btn-success pull-right" data-toggle="modal" data-target="#addQualitative"><i class="fa fa-plus" aria-hidden="true"></i> Opret ny</button>
+            <button  type="button" class="btn btn-block btn-success pull-right" data-toggle="modal" data-target="#newCaseModal" data-url="{{URL::to('/ajax/case/add')}}"><i class="fa fa-plus" aria-hidden="true"></i> Opret ny</button>
         </div>
         <div class="container spark-screen">
             <h3>Aktive</h3>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="box simple-box">
-                        <div class="box-body">
-                            <h4 class="title">Excel problemregning</h4>
-                            <span class="text text-muted">11. december 2016</span>
-                            <button type="button" class="btn btn-block btn-primary">Se aktivitet</button>
+
+                @foreach($team->cases as $case)
+
+
+                    <div class="col-lg-4- col-md-4 col-sm-6 col-xs-12">
+                        <div class="box simple-box">
+                            <div class="box-body">
+                                <h4 class="title">{{$case->name}}</h4>
+                                <span class="text text-muted">11. december 2016</span>
+                                <button type="button" class="btn btn-block btn-primary">Se aktivitet</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                @endforeach
+
+
+
 
 
             </div>
 
 
             <h3>Afslutede</h3>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="box simple-box">
-                        <div class="box-body">
-                            <h4 class="title">Excel problemregning</h4>
-                            <span class="text text-muted">11. december 2016</span>
-                            <button type="button" class="btn btn-block btn-primary">Se aktivitet</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="box simple-box">
-                        <div class="box-body">
-                            <h4 class="title">Excel problemregning</h4>
-                            <span class="text text-muted">11. december 2016</span>
-                            <button type="button" class="btn btn-block btn-primary">Se aktivitet</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="box simple-box">
-                        <div class="box-body">
-                            <h4 class="title">Excel problemregning</h4>
-                            <span class="text text-muted">11. december 2016</span>
-                            <button type="button" class="btn btn-block btn-primary">Se aktivitet</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="box simple-box">
-                        <div class="box-body">
-                            <h4 class="title">Excel problemregning</h4>
-                            <span class="text text-muted">11. december 2016</span>
-                            <button type="button" class="btn btn-block btn-primary">Se aktivitet</button>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-md-4">
                     <div class="box simple-box smooth-rounding">
                         <div class="box-body">
@@ -99,35 +73,53 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
         </div>
     </div>
 
 
-    <!-- Modals -->
-    <div class="modal fade" id="addQualitative" tabindex="-1" role="dialog" aria-labelledby="Kvailitativ" aria-hidden="true">
+    <div class="modal fade" id="newCaseModal" data-form="#createCaseForm" tabindex="-1" role="dialog" aria-labelledby="Ny Case" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="exampleModalLabel">Ny kvalitativ case</h4>
+                    <h4 class="modal-title" id="exampleModalLabel">New message</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="createCaseForm">
                         <div class="form-group">
-                            <label for="name" class="form-control-label">Navn</label>
-                            <input type="text" class="form-control" id="name" placeholder="Ikke angivet">
+                            <label id="tester" for="name" class="form-control-label">Navn: </label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-file-text-o"></i>
+                                </div>
+                                <input type="text" class="form-control" name="name" placeholder='Ikke angivet'>
+                            </div>
+                            <input type="hidden" name="teamId" value="{{$team->id}}">
+                            <input type="hidden" name="target" value="{{URL::route('api') . '/case/add'}}">
+                            {{ csrf_field() }}
+                        </div>
+                        <div class="form-group">
+                            <label>Start- og sluttidspunkt:</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <input name="date" type="text" class="form-control pull-right" id="reservationtime">
+                            </div>
                         </div>
                     </form>
-                    <div class="response"></div>
                 </div>
                 <div class="modal-footer">
+                    <div class="response"></div>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Luk</button>
-                    <button type="button" class="btn btn-primary add">Opret</button>
+                    <button type="button" class="btn btn-primary action" data-target="#newCaseModal">Opret</button>
                 </div>
             </div>
         </div>
     </div>
+
+
 @endsection

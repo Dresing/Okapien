@@ -15,9 +15,6 @@ class Student extends Model
      *
      * @var array
      */
-
-
-
     public function user()
     {
         return $this->morphOne('App\User', 'userable');

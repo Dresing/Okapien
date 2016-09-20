@@ -1059,7 +1059,7 @@
             return this._week.doy;
         },
 
-        _invalidDate: 'Invalid date',
+        _invalidDate: 'Ugyldig dato',
         invalidDate: function () {
             return this._invalidDate;
         }

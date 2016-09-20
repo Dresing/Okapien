@@ -14,12 +14,11 @@ class Cases extends Migration
     {
         Schema::create('cases', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('ownership_id')->unsigned();
-            $table->foreign('ownership_id')->references('id')->on('collection_teacher_topic')->cascade();
+            $table->integer('team_id')->unsigned();
+            $table->foreign('team_id')->references('id')->on('collection_teacher_topic')->cascade();
             $table->string('name');
             $table->integer('uniquecase_id');
             $table->string('uniquecase_type');
-            $table->rememberToken();
             $table->timestamps();
         });
         Schema::create('qualitatives', function (Blueprint $table) {
