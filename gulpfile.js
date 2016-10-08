@@ -15,10 +15,11 @@ elixir(function(mix) {
     mix.scripts([
         'main.js',
         'notifications.js',
-        'modals/case.js',
+        'modals/error.js',
         'ajax/post.js'
     ]);
     mix.less('app.less');
     mix.less('admin-lte/AdminLTE.less');
+    mix.less('admin-lte/skins/skin-blue.less');
     mix.less('bootstrap/bootstrap.less');
 });

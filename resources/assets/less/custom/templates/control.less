@@ -1,17 +1,51 @@
-.left-sidebar{
 
-  .option-panel{
+.control {
+  .container {
+    .container-fixed();
+    padding: 150px 50px;
+    @media (max-width: @screen-xs-min) {
+      width: ~"calc(100% - 100px)";
+      margin-left: 60px;
+    }
+    @media (max-width: @screen-sm-min) {
+      width: ~"calc(100% - 100px)";
+      margin-left: 60px;
+    }
+    @media (max-width: @screen-md-min) {
+      width: ~"calc(100% - 100px)" !important;
+      margin-left: 60px !important;
+    }
+    width: ~"calc(100% - 240px)";
+    margin-left: 240px;
+    max-width: 1200px;
+
+  }
+  .option-panel {
+    h1{
+      font-size: 1.8em;
+    }
     z-index: 2;
     width: ~"calc(100% - 240px)";
     height: 50px;
     background: #fff;
-    position:fixed;
-    right: 0;
-    top:50px;
+    position: fixed;
+    left: 240px;
+    @media (max-width: @screen-lg-min) {
+      left: 240px;
+    }
+    @media (max-width: @screen-md-min) {
+      left: 60px;
+    }
+    @media (max-width: @screen-sm-min) {
+      left: 60px;
+    }
+    @media (max-width: @screen-xs-min) {
+      left: 60px;
+    }
+    top: 50px;
     border-bottom: 1px solid @seperation;
     border-left: 1px solid @seperation;
-    padding-left: 65px;
-    padding-right: 65px;
+    padding: 10px 50px;
     @media (max-width: @screen-lg-min) {
       width: ~"calc(100% - 240px)";
     }
@@ -24,14 +58,14 @@
     @media (max-width: @screen-xs-min) {
       width: ~"calc(100% - 60px)";
     }
-    button{
+    button {
       width: 120px;
-      padding:0;
-      height:100%;
+      padding: 0;
+      height: 100%;
       border-radius: 30px;
     }
-    h2{
-      display:inline-block;
+    h1 {
+      display: inline-block;
       line-height: 30px;
       margin: 0;
     }
@@ -40,11 +74,14 @@
     position:fixed;
     height: calc(~"100vh -" (@navbar-height+60px));
     margin: 0 ;
-    width: 240px;
     top: @navbar-height;
     z-index: 3;
     border:none;
     border-radius: 0;
+  }
+  .full-height.left{
+    left: 0;
+    width: 240px;
     @media (max-width: @screen-lg-min) {
       width: 240px;
     }
@@ -58,25 +95,11 @@
       width: 60px;
     }
   }
-
-
+}
+.no-control{
   .container {
     .container-fixed();
-    padding-top: 150px;
-    @media (max-width: @screen-xs-min) {
-      width: ~"calc(100% - 100px)";
-      margin-left: 80px;
-    }
-    @media (max-width: @screen-sm-min) {
-      width: ~"calc(100% - 100px)";
-      margin-left: 80px;
-    }
-    @media (max-width: @screen-md-min) {
-      width: ~"calc(100% - 100px)" !important;
-      margin-left: 80px !important;
-    }
-      width: ~"calc(100% - 340px)";
-      margin-left: 290px;
+    padding: 100px 50px;
 
   }
 }
