@@ -1,32 +1,83 @@
 .double-sidebar{
-  .full-height{
-    position:fixed;
-    height: calc(~"100vh -" (@navbar-height+60px));
-    margin: 0 ;
-    width: 240px;
-    top: @navbar-height;
-    @media (min-width: @screen-lg-min) {
-      width: 240px;
+
+  .option-panel{
+    width: ~"calc(100% - 240px)";
+    @media (max-width: @screen-lg-min) {
+      width: ~"calc(100% - 240px)";
+    }
+    @media (max-width: @screen-md-min) {
+      width: ~"calc(100% - 60px)";;
+    }
+    @media (max-width: @screen-sm-min) {
+      width: ~"calc(100% - 60px)";
+    }
+    @media (max-width: @screen-xs-min) {
+      width: ~"calc(100% - 60px)";
     }
   }
-  .full-height.left{ left: 0;}
-  .full-height.right{ right: 0;}
+  .full-height.right{
+    overflow:scroll;
+    overflow-x:hidden;
+    z-index: 1;
+    //right: 0;
+    width: 300px;
+    background: transparent;
+    box-shadow:none;
+    padding: 100px 50px 100px 0px;
+    .title{
+      display:none;
+    }
+    @media (max-width: @screen-lg-min) {
+      width: 300px;
+    }
+    @media (max-width: @screen-md-min) {
+      position:relative;
+      float:left;
+      width: 100%;
+      padding: 0;
+      height:auto;
+      margin-bottom: 100px;
+      .title{
+        display:block;
+      }
+    }
+    @media (max-width: @screen-sm-min) {
+      position:relative;
+      float:left;
+      width: 100%;
+      padding: 0px;
+      height:auto;
+      margin-bottom: 100px;
+      .title{
+        display:block;
+      }
+    }
+    @media (max-width: @screen-xs-min) {
+      position:relative;
+      float:left;
+      width: 100%;
+      padding: 0px;
+      height:auto;
+      margin-bottom: 100px;
+      .title{
+        display:block;
+      }
+    }
+  }
 
 
   .container {
-    .container-fixed();
+    width: ~"calc(100% - 540px)";
+    margin-left: 240px;
+  }
 
-    @media (min-width: @screen-sm-min) {
-      width: @container-sm;
-      max-width: @container-sm - 400;
-    }
-    @media (min-width: @screen-md-min) {
-      width: @container-md;
-      max-width: @container-md - 150;
-    }
-    @media (min-width: @screen-lg-min) {
-      width: @container-lg;
-      max-width: ~"calc(100% - 480spx)";
+
+  .hidden-title{
+    display:none;
+    @media (max-width: @screen-md-min) {
+      display:block;
     }
   }
+
+
 }

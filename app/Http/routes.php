@@ -16,8 +16,8 @@ Route::auth();
 
 Route::get('/', 'HomeController@index')->middleware('auth');
 Route::get('/home', 'HomeController@index')->middleware('auth');
-Route::get('klasse/{id}', 'CollectionController@collectionProfile')->middleware('auth');
-Route::get('klasse/{id}/fag/{topicID}', 'CollectionController@TopicProfile')->middleware('auth');
+Route::get('case/kvalitativ/{case}', 'CaseController@qualitative')->middleware('auth');
+Route::get('hold/{team}', 'TeamController@teamProfile')->middleware('auth');
 
 
 /**
@@ -38,13 +38,19 @@ Route::get('feedme', function(){
  * Routes for Ajax-calls (Behind the scene)
  */
 Route::group(['prefix' => 'api', 'middleware' => ['auth']], function(){
+	Route::get('/', function(){
+	})->name('api');
 
-	Route::get('/', function(){})->name('api');
+	Route::get('/test', function(){
+		return array('Observation', 'hyppighed', 'frekvens', 'kumuleret frekvens', 'Geometri', 'Aritmetik');
+	});
 	/**
 	 * Case handling
 	 */
 	Route::group(['prefix' => 'case'], function(){
 		Route::post('add', 'AjaxController@addCase');
+		Route::post('answer', 'AjaxController@submitQualitative');
+		Route::post('close', 'AjaxController@closeCase');
 	});
 
 });
