@@ -4,7 +4,7 @@ namespace App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Mockery\CountValidator\Exception;
-
+use Illuminate\Support\Facades\URL;
 class Qualitative extends Model
 {
     public $timestamps = false;
@@ -25,10 +25,14 @@ class Qualitative extends Model
                 $case = self::create();
                 CaseModel::create([
                     'name' => $name,
+                    'active' => true,
                     'team_id' => $team,
                     'uniquecase_id' => $case->id,
                     'uniquecase_type' => get_class($case),
                 ]);
+                $case->questions()->attach(1);
+                $case->questions()->attach(2);
+                $case->questions()->attach(3);
             });
 
             return is_null($exception) ? true : $exception;
@@ -37,6 +41,14 @@ class Qualitative extends Model
             return false;
         }
 
+    }
+
+    public function questions(){
+        return $this->belongsToMany('App\OpenQuestion', 'open_questions_qualitatives');
+    }
+
+    public function getUrl(){
+        return URL::to('/case/kvalitativ').'/'.$this->id;
     }
 
     /**

@@ -16,12 +16,12 @@
           apply the skin class to the body tag so the changes take effect.
     -->
     <link href="{{ asset('/plugins/daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet"  type="text/css" >
-    <link href="{{ asset('/css/skins/skin-blue.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/css/skin-blue.css') }}" rel="stylesheet" type="text/css" />
     <!-- iCheck -->
     <link href="{{ asset('/plugins/iCheck/square/blue.css') }}" rel="stylesheet" type="text/css" />
     <!-- APP -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet" type="text/css" />
-
+    @yield('page-style')
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
