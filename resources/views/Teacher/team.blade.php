@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-    Home
+    {{$team->collection->name}}
 @endsection
 
 
 @section('main-content')
-    <div class="page left-sidebar" >
+    <div class="page control" >
         <div class="box full-height left">
             <div class="box-header seperation-border" style="height: 50px;">
                 <i class="fa fa-users" style="line-height: 30px; display:block;text-align:center;"></i>
@@ -14,7 +14,7 @@
             <div class="slimScrollDiv" style="position: relative; ovreflow:hidden; width: auto;"><div class="box-body chat" id="chat-box" style="overflow: auto; padding-right: 15px;width: auto;">
                     <!-- chat item -->
 
-                    @foreach($collection->students as $student)
+                    @foreach($team->collection->students as $student)
                     <div class="item seperation-border offline">
                         <img src="{{asset('/img/user1-128x128.jpg')}}" alt="user image"><div class="status"></div></img>
 
@@ -34,45 +34,41 @@
             <!-- /.chat -->
         </div>
         <div class="option-panel box-header">
-            <h2>Evalueringer</h2>
+            <h1>{{$team->collection->name}}</h1>
             <button  type="button" class="btn btn-block btn-success pull-right" data-toggle="modal" data-target="#newCaseModal" data-url="{{URL::to('/ajax/case/add')}}"><i class="fa fa-plus" aria-hidden="true"></i> Opret ny</button>
         </div>
         <div class="container spark-screen">
             <h3>Aktive</h3>
             <div class="row">
 
-                @foreach($team->cases as $case)
-
-
+                @foreach($team->cases->filter(function($case){return $case->active;})->sortByDesc('created_at') as $case)
                     <div class="col-lg-4- col-md-4 col-sm-6 col-xs-12">
                         <div class="box simple-box">
                             <div class="box-body">
                                 <h4 class="title">{{$case->name}}</h4>
-                                <span class="text text-muted">11. december 2016</span>
-                                <button type="button" class="btn btn-block btn-primary">Se aktivitet</button>
+                                <span class="text text-muted">{{$case->created_at->format('d. F Y')}}</span>
+                                <button onclick='location.href="{{$case->uniquecase->getUrl()}}"' type="button" class="btn btn-block btn-primary">Se aktivitet</button>
                             </div>
                         </div>
                     </div>
 
                 @endforeach
-
-
-
-
-
             </div>
-
-
             <h3>Afslutede</h3>
-
-                <div class="col-md-4">
-                    <div class="box simple-box smooth-rounding">
-                        <div class="box-body">
-                            <span class="text text-muted"><b>22</b> ud af <b>29</b> elever har besvaret evalueringen.</span>
-                            <button type="button" class="btn btn-block btn-primary">Afslut</button>
+            <div class="row">
+                @foreach($team->cases->reject(function($case){return $case->active;})->sortByDesc('created_at') as $case)
+                    <div class="col-lg-4- col-md-4 col-sm-6 col-xs-12">
+                        <div class="box simple-box">
+                            <div class="box-body">
+                                <h4 class="title">{{$case->name}}</h4>
+                                <span class="text text-muted">11. december 2016</span>
+                                <button onclick='location.href="{{$case->uniquecase->getUrl()}}"' type="button" class="btn btn-block btn-primary">Se case</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
+
+            </div>
 
         </div>
     </div>
@@ -101,15 +97,6 @@
                             <input type="hidden" name="target" value="{{URL::route('api') . '/case/add'}}">
                             {{ csrf_field() }}
                         </div>
-                        <div class="form-group">
-                            <label>Start- og sluttidspunkt:</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                                <input name="date" type="text" class="form-control pull-right" id="reservationtime">
-                            </div>
-                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -121,5 +108,37 @@
         </div>
     </div>
 
+    <div class="modal modal-danger">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Danger Modal</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body…</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline">Save changes</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+@endsection
 
+@section('page-scripts')
+    <script>
+        $(function() {
+
+            //When a new case is being added post it.
+            $( "#newCaseModal .action" ).click(function() {
+                modalPost(this);
+            });
+        });
+
+    </script>
 @endsection

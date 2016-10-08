@@ -17,6 +17,7 @@ class Cases extends Migration
             $table->integer('team_id')->unsigned();
             $table->foreign('team_id')->references('id')->on('collection_teacher_topic')->cascade();
             $table->string('name');
+            $table->boolean('active');
             $table->integer('uniquecase_id');
             $table->string('uniquecase_type');
             $table->timestamps();

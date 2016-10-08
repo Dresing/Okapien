@@ -8,9 +8,20 @@ class CaseModel extends Model
 {
     protected $table = "cases";
     protected $fillable = [
-        'name', 'team_id' ,'uniquecase_id', 'uniquecase_type',
+        'name', 'active' ,'team_id' ,'uniquecase_id', 'uniquecase_type',
     ];
-    
+
+
+
+    public function team(){
+        return $this->belongsTo('App\Team');
+    }
+
+    public function close()
+    {
+        $this->active = false;
+        $this->save();
+    }
     /**
      * Get the model acosiated with the user e.g. Qualitative/Multiple
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo

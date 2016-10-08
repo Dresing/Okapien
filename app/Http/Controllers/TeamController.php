@@ -9,8 +9,9 @@ use App\Collection;
 use App\Topic;
 use Illuminate\Support\Facades\Auth;
 use App\Team;
+use App\User;
 
-class CollectionController extends Controller
+class TeamController extends Controller
 {
     /**
      * Generates a collection profile which is not topic-specific.
@@ -61,21 +62,16 @@ class CollectionController extends Controller
      * @param $id ID of the collection
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function topicProfile($id, $topicID)
+    public function teamProfile(Team $team)
     {
-        $collection = Collection::find($id);
-        $topic = Topic::find($topicID);
 
-        /**
-         * Bad Request
-         */
-        ($collection === null || $topic === null) ? App::abort(404) :  '';
         /**
          * If student is requesting
          */
         if (Auth::user()->is('Student')):
-            return view('student.home', [
-                'teachers' => User::all(), //Get all teachers
+            //Get the team
+            return view('student.team', [
+                'team' => $team,
             ]);
 
         /**
@@ -84,13 +80,8 @@ class CollectionController extends Controller
         elseif (Auth::user()->is('Teacher')):
 
             //Get the team
-
-
-            
-            return view('teacher.collection', [
-                'owner' => Auth::user()->userable->teaches($collection, $topic),
-                'collection' => $collection,
-                'team' => Team::determine(Auth::user()->userable, $collection, $topic),
+            return view('teacher.team', [
+                'team' => $team
             ]);
 
         endif;

@@ -15,10 +15,15 @@ class Team extends Model
     public function cases(){
         return $this->hasMany('App\CaseModel');
     }
-    public function test(){
-        return "abr";
+    public function collection(){
+        return $this->belongsTo('App\Collection');
     }
-
+    public function teacher(){
+        return $this->belongsTo('App\Teacher');
+    }
+    public function topic(){
+        return $this->belongsTo('App\Topic');
+    }
     /**
      * Select a Team based on a Teacher, Student and Topic object.
      * @param Teacher $teacher

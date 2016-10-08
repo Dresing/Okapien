@@ -11,6 +11,7 @@ use App\Topic;
 use App\Qualitative;
 use App\CaseModel;
 use App\Team;
+use App\OpenQuestion;
 
 
 class Insertion extends Migration
@@ -124,9 +125,19 @@ class Insertion extends Migration
 
         CaseModel::create([
             'name' => 'Hello, World!',
+            'active' => true,
             'team_id' => 1,
             'uniquecase_id' => $qual->id,
             'uniquecase_type' => get_class($qual),
+        ]);
+        OpenQuestion::create([
+            'content' => 'Det har jeg lært',
+        ]);
+        OpenQuestion::create([
+            'content' => 'Det har jeg svært ved',
+        ]);
+        OpenQuestion::create([
+            'content' => 'Meningen med livet.',
         ]);
     }
 
