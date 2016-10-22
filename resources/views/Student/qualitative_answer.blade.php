@@ -16,21 +16,15 @@
 				<div class="app-container">
 
 					<div id="owl" class="owl-carousel">
-						@foreach($case->questions as $question)
-							<div>
-								<h1 style="margin-bottom: 30px" class="text-center">{{$question->content}}</h1>
-								<textarea id="{{$question->id}}" style="resize: none;max-width:100%; font-size: 1.3em;" class="form-control" rows="10"></textarea>
-							</div>
-						@endforeach
+
 					</div>
+					<form id="questions" data-target="#owl" >
+						<input type="hidden" name="caseId" value="{{$case->id}}">
+						<input type="hidden" name="target" value="{{URL::route('api') . '/case/questions'}}">
+					</form>
 					<div class="info-panel">
 						<div class="dots pull-left">
 							<div class="count">Spørgsmål: <span id="q_count"></span></div>
-							@foreach($case->questions as $question)
-								<div class="dot">
-
-								</div>
-							@endforeach
 						</div>
 						<button type="button" id="nextQuestion" class="btn btn-block btn-primary next pull-right">Næste</button>
 						<button style="display:none; margin: 0;" type="button" id="sendAnswer" class="btn btn-block btn-success next pull-right">Afslut</button>
@@ -45,17 +39,33 @@
 	<script src="{{asset('plugins/owl/owl.carousel.min.js')}}"></script>
 	<script>
 		$(document).ready(function() {
-			var current = 0;
-			var length = 0;
-			var owl = $("#owl").owlCarousel({
-				loop : true,
-				items : 1,
-				slideSpeed : 300,
-				pagination : false,
-				singleItem:true,
+			var owl;
+			getCall('#questions', {} ,function (resp, target) {
+				var data = resp['data'];
+				data.forEach(function (question) {
+					target.append(''
+							+'<div>'
+							+'<h1 style="margin-bottom: 30px" class="text-center">'+question.content+'</h1>'
+							+'<textarea id="'+question.id+'" style="resize: none;max-width:100%; font-size: 1.3em;" class="form-control" rows="10"></textarea>'
+							+'</div>')
+					$('.dots').append('<div style="cursor:pointer !important;margin:2.5px !important"class="dot"></div>');
+				});
+				$('.dot').click(function(){
+					var owlData = $("#owl").data('owlCarousel');
+					owlData.goTo($(this).index()-1);
+				});
+				owl = $("#owl").owlCarousel({
+					loop : true,
+					items : 1,
+					slideSpeed : 300,
+					pagination : false,
+					singleItem:true,
+					mouseDrag: false,
 
-				afterAction : afterAction
+					afterAction : afterAction
+				});
 			});
+
 
 			function afterAction(){
 
@@ -91,9 +101,17 @@
 					owl.trigger('owl.next');
 				}
 			});
-			$('.dot').click(function(){
-				var owlData = $("#owl").data('owlCarousel');
-				owlData.goTo($(this).index()-1);
+
+			$(document).keydown(function (e)
+			{
+				var keycode1 = (e.keyCode ? e.keyCode : e.which);
+				if (keycode1 == 0 || keycode1 == 9) {
+					e.preventDefault();
+					e.stopPropagation();
+					if(current < length - 1) {
+						owl.trigger('owl.next');
+					}
+				}
 			});
 		});
 

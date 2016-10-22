@@ -9,8 +9,9 @@
 <!-- MomentJS -->
 <script src="{{ asset('/plugins/daterangepicker/moment.min.js') }}"></script>
 <script src="{{ asset('/plugins/daterangepicker/locale/da.js') }}"></script>
-<!-- DatePicker -->
-<script src="{{ asset('/plugins/daterangepicker/daterangepicker.js') }}"></script>
+<!-- VUE -->
+<script src="{{ asset('/plugins/vue/vue.js') }}"></script>
+
 <!-- Custom -->
 <script src="{{ asset('/js/all.js') }}" type="text/javascript"></script>
 
