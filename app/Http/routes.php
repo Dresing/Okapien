@@ -48,10 +48,15 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth']], function(){
 	 * Case handling
 	 */
 	Route::group(['prefix' => 'case'], function(){
-		Route::post('add', 'AjaxController@addCase');
-		Route::post('answer', 'AjaxController@submitQualitative');
-		Route::post('close', 'AjaxController@closeCase');
+		Route::get('/', 'CaseController@getCases');
+		Route::post('add', 'CaseController@addCase');
+		Route::post('answer', 'CaseController@submitQualitative');
+		Route::post('close', 'CaseController@closeCase');
+		Route::get('questions', 'CaseController@getQuestions');
 	});
+	Route::group(['prefix' => 'collection'], function(){
+		Route::get('students', 'CollectionController@getStudents');
 
+	});
 });
 
