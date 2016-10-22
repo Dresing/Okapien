@@ -16,7 +16,10 @@ elixir(function(mix) {
         'main.js',
         'notifications.js',
         'modals/error.js',
-        'ajax/post.js'
+        'ajax/post.js',
+        'ajax/infiniteScroll.js',
+        'ajax/get.js',
+        'security/filters.js',
     ]);
     mix.less('app.less');
     mix.less('admin-lte/AdminLTE.less');

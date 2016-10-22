@@ -5592,5 +5592,18 @@ button .fa-refresh.fa-spin {
 .chat .offline .status {
   background: #dd4b39;
 }
+.infinite-load {
+  display: block;
+  width: 100%;
+  height: 50px;
+  position: relative;
+  float: left;
+}
+.infinite-load i {
+  display: block;
+  text-align: center;
+  line-height: 50px;
+  font-size: 1.8em;
+}
 
 /*# sourceMappingURL=app.css.map */
