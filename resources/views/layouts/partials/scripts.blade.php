@@ -11,6 +11,8 @@
 <script src="{{ asset('/plugins/daterangepicker/locale/da.js') }}"></script>
 <!-- VUE -->
 <script src="{{ asset('/plugins/vue/vue.js') }}"></script>
+<!-- VUE-strap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-strap/1.1.29/vue-strap.min.js"></script>
 
 <!-- Custom -->
 <script src="{{ asset('/js/all.js') }}" type="text/javascript"></script>

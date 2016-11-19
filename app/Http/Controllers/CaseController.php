@@ -21,7 +21,7 @@ class CaseController extends Controller
                 'case' => $case->caseModel
             ]);
         elseif(Auth::user()->is('Student')):
-            return view('student.qualitative_answer', [
+            return view('student.cases.qualitative.answer', [
                 'case' => $case
             ]);
         endif;

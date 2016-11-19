@@ -11,14 +11,38 @@ use Illuminate\Http\Request;
 |
 */
 
-
+/**
+ * Routes for index
+ */
 Route::auth();
-
 Route::get('/', 'HomeController@index')->middleware('auth');
 Route::get('/home', 'HomeController@index')->middleware('auth');
-Route::get('case/kvalitativ/{case}', 'CaseController@qualitative')->middleware('auth');
-Route::get('hold/{team}', 'TeamController@teamProfile')->middleware('auth');
 
+/**
+ * Routes for cases
+ */
+Route::group(['prefix' => 'case', 'middleware' => ['auth']], function(){
+
+    /**
+     * Case handling
+     */
+    Route::group(['prefix' => 'kvalitativ'], function(){
+        Route::get('/{case}', 'CaseController@qualitative');
+    });
+    Route::group(['prefix' => 'kvantitativ'], function(){
+        Route::get('/{case}', 'CaseController@qualitative');
+
+    });
+});
+
+/**
+ * Routes for hold
+ */
+Route::group(['prefix' => 'hold', 'middleware' => ['auth']], function(){
+
+    Route::get('/{team}', 'TeamController@teamProfile')->middleware('auth');
+
+});
 
 /**
  * Ajax Callse
