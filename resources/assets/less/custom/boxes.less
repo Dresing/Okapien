@@ -1,0 +1,65 @@
+.simple-box{
+  padding: 15px;
+  .title{
+    font-size: 1.6em;
+    display:block;
+    margin-top: 0;
+    margin-bottom: 5px;
+    overflow-wrap: break-word;
+  }
+  .btn{
+    margin-top:5px;
+    width:auto;
+  }
+}
+
+.smooth-rounding{
+  border-radius: 10px;
+}
+.rough-rounding{
+  border-radius: 25px;
+}
+
+.case-message{
+  height: auto;
+  padding-left: 60px;
+  position:relative;
+  margin-bottom: 20px;
+  @media (max-width: @screen-md-min) {
+    padding-left: 0;
+  }
+  .profile-img{
+    position:absolute;
+    left: 0;
+    bottom: 75px;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    @media (max-width: @screen-md-min) {
+      display:none;
+    }
+  }
+  .name{
+    display:block;
+    margin-bottom: 5px;
+    padding: 0 30px;
+  }
+  .message{
+    width: 100%;
+    .rough-rounding;
+    height: auto;
+    background: #fff;
+    padding: 30px;
+    min-height: 50px;
+  }
+  .actions{
+    padding: 10px;
+    button{
+      margin: 2.5px;
+      border-radius: 30px;
+    }
+  }
+
+}
