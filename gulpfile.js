@@ -1,4 +1,6 @@
-var elixir = require('laravel-elixir');
+const elixir = require('laravel-elixir');
+
+require('laravel-elixir-vue-2');
 
 /*
  |--------------------------------------------------------------------------
@@ -6,23 +8,46 @@ var elixir = require('laravel-elixir');
  |--------------------------------------------------------------------------
  |
  | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Less
+ | for your Laravel application. By default, we are compiling the Sass
  | file for our application, as well as publishing vendor resources.
  |
  */
 
 elixir(function(mix) {
-    mix.scripts([
-        'main.js',
-        'notifications.js',
-        'modals/error.js',
-        'ajax/post.js',
-        'ajax/infiniteScroll.js',
-        'ajax/get.js',
-        'security/filters.js',
-    ]);
-    mix.less('app.less');
-    mix.less('admin-lte/AdminLTE.less');
-    mix.less('admin-lte/skins/skin-blue.less');
-    mix.less('bootstrap/bootstrap.less');
+
+    // Merge all Student CSS files in one file.
+    mix.less([
+        './resources/assets/plugins/bootstrap-3.3.7/less/bootstrap.less',
+        './resources/assets/plugins/font-awesome-4.7.0/less/font-awesome.less',
+        './resources/assets/plugins/ionicons-2.0.1/less/ionicons.less',
+        './resources/assets/plugins/iCheck/square/blue.css',
+
+        './resources/assets/less/app.less',
+
+    ], './public/css/app.css');
+
+    // Copy fonts to public.
+    mix.copy('./resources/assets/plugins/bootstrap-3.3.7/dist/fonts', './public/fonts');
+    mix.copy('./resources/assets/plugins/font-awesome-4.7.0/fonts', './public/fonts');
+    mix.copy('./resources/assets/plugins/ionicons-2.0.1/fonts', './public/fonts');
+
+
+    // Merge all APP JS files in one file.
+    mix.webpack([
+        'teacher.js',
+
+    ], './public/js/teacher.js');
+
+
+    // Merge all APP JS files in one file.
+    mix.webpack([
+        'teacher.js',
+
+    ], './public/js/student.js');
+
+    // Merge all APP JS files in one file.
+    mix.webpack([
+        'app.js',
+
+    ], './public/js/app.js');
 });
