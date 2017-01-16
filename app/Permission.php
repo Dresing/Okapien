@@ -1,7 +1,10 @@
 <?php
+
 namespace App;
 
-use Zizaco\Entrust\EntrustPermission;
+use Laratrust\LaratrustPermission;
 
-class Permission extends EntrustPermission{
+class Permission extends LaratrustPermission
+{
+    //
 }
