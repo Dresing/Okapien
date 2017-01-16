@@ -2,12 +2,12 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="e6ab1130-fbf6-4646-a5ab-839e706fe11a" name="okapien.egtved-spejder.dk" url="http://okapien.egtved-spejder.dk">
-        <fileTransfer host="ftp.egtved-spejder.dk" port="21" rootFolder="/public_html/okapien" password="df99dffcdf9cdf92df9adfcbdfe6dfc4dfdcdfc9" username="uxnrupmf">
+      <webServer id="e6ab1130-fbf6-4646-a5ab-839e706fe11a" name="okapien" url="http://okapien.egtved-spejder.dk">
+        <fileTransfer explicitFtps="false" host="185.134.30.151" port="22" rootFolder="/home/okapien/www/laravel" accessType="SFTP" password="dfe9dfebdff9" username="okapien">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
-          <option name="port" value="21" />
+          <option name="port" value="22" />
         </fileTransfer>
       </webServer>
     </option>
