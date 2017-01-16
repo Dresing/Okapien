@@ -23,14 +23,29 @@ class CourseController extends Controller
         //**$this->middleware('session.database', ['only' => ['index', 'invalidateSession']]);
     }
 
-    public function index($id)
+    public function index($id = null)
     {
-        /**
-         *
-         *
-         */
 
-        return $id;
+        /**
+         * If teacher is requesting
+         */
+        if (Auth::user()->hasRole('teacher')):
+
+            $data['course'] = $this->getCourses()->Where('course_id', $id)->first();
+            $data['teacher'] = Auth::user();
+
+            return view('app.teacher.course', compact('data'));
+
+        endif;
+
+        /**
+         * If student is requesting
+         */
+        return view('app.student.course', [
+            'student' => Auth::user(),
+            'courses' => $this->getCourses(),
+        ]);
+
     }
 
     public function cases()

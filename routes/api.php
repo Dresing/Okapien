@@ -16,27 +16,32 @@ use Illuminate\Http\Request;
 
 
 /**
- * Routes for hold
+ *
  */
 Route::group(['prefix' => 'user',  'middleware' => 'auth:api'], function(){
 
     Route::get('/', function (Request $request) {
         return $request->user();
     });
-    Route::get('/courses', [
-        'uses' => 'CourseController@index',
-    ]);
+
 });
 
 
 /**
  * Routes for hold
  */
-Route::group(['prefix' => 'hold',  'middleware' => 'auth:api'], function(){
+Route::group(['prefix' => 'v1',  'middleware' => 'auth:api'], function(){
 
-    Route::get('/', function (Request $request) {
-        return $request->user();
+    Route::group(['prefix' => 'student',  'middleware' => 'auth:api'], function(){
+
+        Route::get('/list/{id}', [
+            'uses' => 'StudentController@getStudentList',
+        ]);
     });
+
+    Route::get('/courses', [
+        'uses' => 'CourseController@index',
+    ]);
 });
 
 
