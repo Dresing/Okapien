@@ -17,7 +17,7 @@ require('./bootstrap');
  * Teacher
  */
 
-Vue.component('courses', require('./components/teacher/courses.vue'));
+Vue.component('studentlist', require('./components/studentlist.vue'));
 
 /**
  * Passport
