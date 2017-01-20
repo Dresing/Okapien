@@ -21,8 +21,8 @@ class Team extends Model
     public function teacher(){
         return $this->belongsTo('App\Teacher');
     }
-    public function topic(){
-        return $this->belongsTo('App\Topic');
+    public function subject(){
+        return $this->belongsTo('App\Subject');
     }
     /**
      * Select a Team based on a Teacher, Student and Topic object.

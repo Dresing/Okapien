@@ -26,7 +26,10 @@ class HomeController extends Controller
          * If student is requesting
          */
         if (Auth::user()->isType('Student')):
+
+            dd( Auth::user()->userable->team);
             return view('app.student.home', [
+
                 'student' => Auth::user()->userable, //Get all teachers
             ]);
 

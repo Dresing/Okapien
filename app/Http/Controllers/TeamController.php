@@ -31,7 +31,7 @@ class TeamController extends Controller
         /**
          * If student is requesting
          */
-        if (Auth::user()->is('Student')):
+        if (Auth::user()->isType('Student')):
             return view('student.home', [
                 'teachers' => User::all(), //Get all teachers
             ]);
@@ -39,7 +39,7 @@ class TeamController extends Controller
         /**
          * If teacher is requesting
          */
-        elseif (Auth::user()->is('Teacher')):
+        elseif (Auth::user()->isType('Teacher')):
 
             
             return view('teacher.collection', [
@@ -68,7 +68,7 @@ class TeamController extends Controller
         /**
          * If student is requesting
          */
-        if (Auth::user()->is('Student')):
+        if (Auth::user()->isType('Student')):
             //Get the team
             return view('student.team', [
                 'team' => $team,
@@ -77,10 +77,10 @@ class TeamController extends Controller
         /**
          * If teacher is requesting
          */
-        elseif (Auth::user()->is('Teacher')):
+        elseif (Auth::user()->isType('Teacher')):
 
             //Get the team
-            return view('teacher.team', [
+            return view('app.teacher.team', [
                 'team' => $team
             ]);
 

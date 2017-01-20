@@ -35,7 +35,9 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
 
-    Route::group(['prefix' => 'klasse',  'middleware' => 'auth'], function(){
+    Route::group(['prefix' => 'hold',  'middleware' => 'auth'], function(){
+
+        Route::get('/{team}', 'TeamController@teamProfile')->middleware('auth');
 
         Route::get('/{team}-{course}-{level}-{track}', 'TeamController@teamProfile');
 
