@@ -2,52 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use App\Traits\Courseable;
+use App\Http\Requests;
+use App\APIAuth;
+use App\Collection;
+use App\User;
+use App\Role;
+use App\Teacher;
+use App\Student;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use App\Http\Controllers\CourseController;
+
 
 class HomeController extends Controller
 {
-    use Courseable;
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
 
     /**
-     * Henter alle Courses i forhold til om man er elev/lærer. Metoden bliver hentet i App\Traits\Courseable.
+     * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        /**
+         * If student is requesting
+         */
+        if (Auth::user()->isType('Student')):
+            return view('app.student.home', [
+                'student' => Auth::user()->userable, //Get all teachers
+            ]);
 
         /**
          * If teacher is requesting
          */
-        if (Auth::user()->hasRole('teacher')):
+        elseif (Auth::user()->isType('Teacher')):
 
-            $data['courses'] = $this->getCourses();
-            $data['teacher'] = Auth::user();
-
-            return view('app.teacher.home', compact('data'));
+            return view('app.teacher.home', ['user' => Auth::user()]);
 
         endif;
 
         /**
-         * If student is requesting
+         *  This should never occour unless an error is present. Send them to the login-page.
          */
-        return view('app.student.home', [
-                'student' => Auth::user(),
-                'courses' => $this->getCourses(),
-        ]);
+        return view('auth.login');
 
     }
 }

@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+/**
+ * Routes for hold
+ */
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [
@@ -34,7 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'klasse',  'middleware' => 'auth'], function(){
 
-        Route::get('/{id}-{course}-{level}-{track}', 'CourseController@index');
+        Route::get('/{team}-{course}-{level}-{track}', 'TeamController@teamProfile');
 
         Route::get('/{id}-{course}-{level}-{track}/case', 'CourseController@cases');
     });
