@@ -16,7 +16,7 @@
 <script>
     export default {
         mounted() {
-            this.$http.get('/api/user/courses')
+            this.$http.get('/api/courses')
                 .then( (resp) => {
                     console.log(resp)
                     this.status = resp.body.status

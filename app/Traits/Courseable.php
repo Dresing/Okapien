@@ -29,8 +29,7 @@ trait Courseable
                 $query->with(['CourseAdministration' => function ($query) {
                     $query->with('UserInfo');
                     }]);
-            }])
-
+                }])
                 ->Where('user_id', Auth::user()->id)
                 ->get();
 

@@ -29,6 +29,9 @@ class CourseStudents extends Model {
     public function CourseAdministration(){
         return $this->hasMany('App\CourseAdministration', 'course_id', 'id');
     }
+    public function UserInfo(){
+        return $this->belongsTo('App\User', 'user_id', 'id');
+    }
 
 
 }

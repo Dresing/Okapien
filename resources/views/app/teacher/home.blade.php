@@ -5,17 +5,19 @@
 @endsection
 
 @section('content')
-    <courses></courses>
+    <div id="app" class="page control" >
 
-    <div class="container spark-screen">
-        <div class="row bottom-buffer">
-            <h1 class="text-center">Mine klasser</h1>
-        </div>
+        <div class="container spark-screen" style="margin-left:0px; width: 100%;padding-top: 75px; max-width: 2000px;">
+            <div class="option-panel box-header" style="left: 0px;width: 100%">
+                <h1><i class="fa fa-lg fa-fw fa-home"></i></h1>
+                <button  type="button" class="btn btn-block btn-success pull-right" data-toggle="modal" data-target="#newCaseModal" data-url="{{URL::to('/ajax/case/add')}}"><i class="fa fa-plus" aria-hidden="true"></i> Opret ny</button>
+            </div>
+
         <div class="row">
             <div class="col-md-12">
                 @foreach($data['courses'] as $course)
                     <div class="col-md-6">
-                        <a class="no-effect" href="hold/{{ $course->course_id }}">
+                        <a class="no-effect" href="klasse/{{ $course->course_id }}-{{$course['CourseInfo']['subject']->name}}-{{$course['CourseInfo']->level}}-{{$course['CourseInfo']->track}}">
                             <div class="box box-widget widget-user">
                                 <!-- Add the bg color to the header using any of the bg-* classes -->
                                 <div class="widget-user-header bg-black" style="background:  url({{asset('/img/subject/'. $course['CourseInfo']['subject']->name .'.png')}}) center center;">

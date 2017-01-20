@@ -37,7 +37,6 @@ class HomeController extends Controller
             $data['courses'] = $this->getCourses();
             $data['teacher'] = Auth::user();
 
-
             return view('app.teacher.home', compact('data'));
 
         endif;
