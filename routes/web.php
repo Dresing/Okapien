@@ -24,6 +24,13 @@ Route::group(['middleware' => 'auth'], function () {
         'uses' => 'HomeController@index',
     ]);
 
+    Route::group(['prefix' => 'evaluering',  'middleware' => 'auth'], function(){
+
+        Route::get('/ny', 'EvaluationController@add');
+
+        Route::get('/{id}-{course}-{level}-{track}/case', 'CourseController@cases');
+    });
+
 
     Route::group(['prefix' => 'klasse',  'middleware' => 'auth'], function(){
 

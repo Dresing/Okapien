@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title> Okapien - @yield('htmlheader_title', 'Home') </title>
+    <title> Okapien - @yield('page_title', 'Hjem') </title>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -41,9 +41,13 @@
 
 </div><!-- ./wrapper -->
 
-
 <!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+@yield('before-scripts-end')
 <script src="/js/teacher.js"></script>
+@yield('after-scripts-end')
+<!-- Scripts -->
+
 
 </body>
 </html>

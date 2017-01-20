@@ -1,8 +1,6 @@
 @extends('layouts.teacher')
 
-@section('htmlheader_title')
-    Hjem
-@endsection
+@section('page_title', 'Hjem')
 
 @section('content')
     <div id="app" class="page control" >
@@ -10,7 +8,9 @@
         <div class="container spark-screen" style="margin-left:0px; width: 100%;padding-top: 75px; max-width: 2000px;">
             <div class="option-panel box-header" style="left: 0px;width: 100%">
                 <h1><i class="fa fa-lg fa-fw fa-home"></i></h1>
-                <button  type="button" class="btn btn-block btn-success pull-right" data-toggle="modal" data-target="#newCaseModal" data-url="{{URL::to('/ajax/case/add')}}"><i class="fa fa-plus" aria-hidden="true"></i> Opret ny</button>
+                <span style="vertical-align: 1px;"> > Hjem</span>
+
+                @include('layouts/partials/add-button')
             </div>
 
         <div class="row">
@@ -21,8 +21,8 @@
                             <div class="box box-widget widget-user">
                                 <!-- Add the bg color to the header using any of the bg-* classes -->
                                 <div class="widget-user-header bg-black" style="background:  url({{asset('/img/subject/'. $course['CourseInfo']['subject']->name .'.png')}}) center center;">
-                                    <h3 class="widget-user-username">{{$course['CourseInfo']['subject']->name}}: {{$course['CourseInfo']->level}}{{$course['CourseInfo']->track}}</h3>
-                                    <h5 class="widget-user-desc"></h5>
+                                    <h3 class="widget-user-username">{{$course['CourseInfo']['subject']->name}}</h3>
+                                    <h5 class="widget-user-desc">{{$course['CourseInfo']->level}}{{$course['CourseInfo']->track}}</h5>
                                 </div>
 
                                 @foreach($course['CourseInfo']['CourseAdministration'] as $indexKey => $CourseAdministration)
