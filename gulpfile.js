@@ -21,6 +21,8 @@ elixir(function(mix) {
         './resources/assets/plugins/font-awesome-4.7.0/less/font-awesome.less',
         './resources/assets/plugins/ionicons-2.0.1/less/ionicons.less',
         './resources/assets/plugins/iCheck/square/blue.css',
+        './resources/assets/plugins/select2-4.0.3/dist/css/select2.min.css',
+        './resources/assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css',
 
         './resources/assets/less/app.less',
 
@@ -34,6 +36,10 @@ elixir(function(mix) {
 
     // Merge all APP JS files in one file.
     mix.webpack([
+        './resources/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
+
+        './resources/assets/plugins/select2-4.0.3/dist/js/select2.full.min.js',
+
         'teacher.js',
 
     ], './public/js/teacher.js');

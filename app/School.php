@@ -13,7 +13,11 @@ class School extends Model {
 	 */
 	protected $table = 'schools';
 
-	protected $fillable = [];
+	protected $fillable = [
+	    'name',
+        'town',
+        'postal'
+    ];
 
 
 }

@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+/**
+ * Routes for hold
+ */
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [
@@ -24,10 +27,19 @@ Route::group(['middleware' => 'auth'], function () {
         'uses' => 'HomeController@index',
     ]);
 
+    Route::group(['prefix' => 'evaluering',  'middleware' => 'auth'], function(){
 
-    Route::group(['prefix' => 'klasse',  'middleware' => 'auth'], function(){
+        Route::get('/ny', 'EvaluationController@add');
 
-        Route::get('/{id}-{course}-{level}-{track}', 'CourseController@index');
+        Route::get('/{id}-{course}-{level}-{track}/case', 'CourseController@cases');
+    });
+
+
+    Route::group(['prefix' => 'hold',  'middleware' => 'auth'], function(){
+
+        Route::get('/{team}', 'TeamController@teamProfile')->middleware('auth');
+
+        Route::get('/{team}-{course}-{level}-{track}', 'TeamController@teamProfile');
 
         Route::get('/{id}-{course}-{level}-{track}/case', 'CourseController@cases');
     });

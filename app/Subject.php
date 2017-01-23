@@ -11,9 +11,9 @@ class Subject extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'Subjects';
+	protected $table = 'subjects';
 
-	protected $fillable = [];
+	protected $fillable = ['name'];
 
 
 }
