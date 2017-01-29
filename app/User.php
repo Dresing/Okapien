@@ -53,7 +53,7 @@ class User extends Authenticatable
      * @return bool If the user is indeed of the request type, true is returned. False otherwise.
      */
     public function isType($type){
-        if($this->userable_type === "App\\".$type){
+        if(strcasecmp($this->userable_type,  "App\\".$type) == 0){
             return true;
         }
         return false;

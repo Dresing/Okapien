@@ -8,9 +8,11 @@ use App\Traits\Courseable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
+use App\Facades\Privilege;
+use App;
 use App\User;
-
+use App\Student;
+use App\Teacher;
 class StudentController extends Controller
 {
     use Courseable;
@@ -53,18 +55,24 @@ class StudentController extends Controller
         return $data;
     }
 
-    public function getCourse()
-    {
-        /**
-         * TEST - kan slettes !
-         * Henter alle Courses i forhold til om man er elev/lærer. Metoden bliver hentet i App\Traits\Courseable.
-         *
-         */
 
-        return $this->getCourses();
+
+    public function getCourses(Student $student){
+        $id = $student->id;
+
+
+       Privilege::check([
+           'teacher' => [
+               "teaches:$id|any",
+           ],
+           'student' => [
+               "self:$id|require"
+           ],
+       ]);
+
+        return Student::teams($student);
     }
 
 }
-
 
 

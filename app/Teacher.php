@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Collection;
+
 
 class Teacher extends Model
 {
@@ -31,7 +33,7 @@ class Teacher extends Model
      * @param Collection $collection the collection to inspect
      * @param Topic|null $topic Optional topic which to check if the teacher has this topic with the collection.
      * @return bool True if the teacher indeed teaches the collection, false if not.
-     */
+     **/
     public function teaches(Collection $collection, Topic $topic = null){
         if($topic === null) {
             if ($collection->teachers->contains($this->id)) {
@@ -49,6 +51,19 @@ class Teacher extends Model
                 return false;
             }
         }
+    }
 
+    /**
+     * Determines whether the teacher teaches a given student in any course.
+     * @param Student $student
+     * @return bool
+     */
+    public function teachesStudent($student){
+        foreach($this->teams as $team){
+            if($team->collection->students->contains($student)){
+                return true;
+            }
+        }
+        return false;
     }
 }

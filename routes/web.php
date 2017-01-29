@@ -11,11 +11,30 @@
 |
 */
 
+Route::resource('test', 'testController');
+
+
+use Illuminate\Support\Facades\Log;
 Route::get('/', function () {
+    Log::info('homepage!');
     return view('welcome');
 });
 
 Auth::routes();
+
+
+Route::group(['middleware' => 'auth', 'prefix' => 'api-test'], function(){
+
+    Route::group(['prefix' => 'user'], function(){
+        Route::get('/', function(){
+            abort(404);
+        });
+        Route::get('/{student}', 'StudentController@getCourses');
+    });
+
+
+});
+
 
 /**
  * Routes for hold
@@ -65,3 +84,5 @@ Route::group(['prefix' => 'user',  'middleware' => 'auth'], function(){
         'uses' => 'StudentController@getStudentList',
     ]);
 });
+
+

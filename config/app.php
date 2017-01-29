@@ -232,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Laratrust'   => Laratrust\LaratrustFacade::class,
+        'Privilege'   => App\Facades\Privilege::class,
 
     ],
 

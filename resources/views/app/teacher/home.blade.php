@@ -17,7 +17,7 @@
 			<div class="col-md-12">
 				@foreach($user->userable->teams as $team)
 						<div class="col-md-6">
-							<a class="no-effect" href="hold/{{$team->id}}">
+							<a clas	s="no-effect" href="hold/{{$team->id}}">
 								<div class="box box-widget widget-user">
 									<!-- Add the bg color to the header using any of the bg-* classes -->
 									<div class="widget-user-header bg-black" style="background:  url({{asset('/img/photo1.png')}}) center center;">

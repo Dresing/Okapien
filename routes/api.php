@@ -15,16 +15,8 @@ use Illuminate\Http\Request;
 
 
 
-/**
- *
- */
-Route::group(['prefix' => 'user',  'middleware' => 'auth:api'], function(){
 
-    Route::get('/', function (Request $request) {
-        return $request->user();
-    });
-
-});
+//Route::resource('app', 'testController');
 
 
 /**
