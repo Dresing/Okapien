@@ -1,0 +1,27 @@
+$primaryColor: #673ab7;
+$backgroundColor: white;
+
+body{
+	margin: 0;
+}
+
+
+  // For Google Chrome
+  ::-webkit-scrollbar {
+      width:  4px;
+      height: 8px
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: $primaryColor;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: $backgroundColor;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $primaryColor;
+    scrollbar-track-color: $backgroundColor;
+  }
