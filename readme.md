@@ -1,7 +1,7 @@
 <h1 align="center">Okapien</h1>
 
 <h2>About</h2>
-An application that is awesome as such.
+An application that is awesome as such. Much Amaze.
 
 <h2>Install</h2>
 - npm install
