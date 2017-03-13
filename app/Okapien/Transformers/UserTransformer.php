@@ -22,11 +22,11 @@ class UserTransformer extends Transformer{
      * @return array
      */
     public function transform($user){
+
         return [
             'id' => $user['id'],
             'name' => $user['name'],
-            'school' => (new SchoolTransformer())->transform(School::find($user['school_id']))
-            
+            'school' => $user['school']
         ];
     }
 }

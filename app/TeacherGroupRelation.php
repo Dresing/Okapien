@@ -11,4 +11,9 @@ class TeacherGroupRelation extends Model
         'teacher_group_id',
         'teacher_id',
     ];
+
+    public function teacher(){
+        return $this->belongsTo('App\Teacher');
+    }    
+
 }

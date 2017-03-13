@@ -25,10 +25,10 @@ class TeacherGroupTransformer extends Transformer{
         return [
             'id' => $teacherGroup['id'],
             'teachers' => (new TeacherGroupRelationTransformer())->
-                transformCollection(TeacherGroupRelation::where('teacher_group_id', $teacherGroup['school_id'])->get()->toArray())
+                transformCollection($teacherGroup['TeacherGroupRelation']->toArray())
             ,
             'school' => (new SchoolTransformer())->
-            transformCollection(School::where('id', $teacherGroup['school_id'])->get()->toArray()),
+            transform($teacherGroup['school']),
         ];
     }
 }

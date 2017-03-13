@@ -22,10 +22,7 @@ class TeacherGroupRelationTransformer extends Transformer{
     public function transform($teacherGroupRelation){
 
         return [
-            'role' => 'Boss-ass bitch',
-            'teacher' => $teacher = (new TeacherTransformer)->transform(Teacher::find($teacherGroupRelation['teacher_id']))
-            ,
-
+            'teacher' => $teacher = (new TeacherTransformer)->transform($teacherGroupRelation['teacher'])
         ];
     }
 }

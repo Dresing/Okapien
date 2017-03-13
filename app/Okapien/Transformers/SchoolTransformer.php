@@ -17,6 +17,7 @@ class SchoolTransformer extends Transformer{
      * @return array
      */
     public function transform($school){
+
         return [
             'id' => $school['id'],
             'name' => $school['name'],

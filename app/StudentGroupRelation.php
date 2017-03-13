@@ -11,4 +11,8 @@ class StudentGroupRelation extends Model
         'student_group_id',
         'student_id',
     ];
+
+    public function student(){
+        return $this->belongsTo('App\Student');
+    }    
 }

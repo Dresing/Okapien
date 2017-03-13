@@ -20,22 +20,10 @@ class Teacher extends Model
         return $this->morphOne('App\User', 'userable');
     }
 
-    /*public function topics(){
-       return $this->belongsToMany('App\Topic', 'collection_teacher_topic');
-    }*/
 
     public function courses(){
-        $courses = array();
 
-        foreach ($this->teacherGroups as $teacherGroup)
-        {
-            foreach ($teacherGroup->courses as $course)
-            {
-                $courses[$course->id] = $course;
-            }
-        }
-
-        return Collection::make($courses);
+        dd(Course::with(['TeacherGroup'])->get());
     }
     public function teacherGroups(){
         return $this->belongsToMany('App\TeacherGroup', 'teacher_group_teacher');

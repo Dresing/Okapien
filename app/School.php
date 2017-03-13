@@ -14,6 +14,7 @@ class School extends Model {
 	protected $table = 'schools';
 
 	protected $fillable = [
+		'id',
 	    'name',
         'town',
         'postal'

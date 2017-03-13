@@ -23,13 +23,15 @@ class StudentGroupTransformer extends Transformer{
      * @return array
      */
     public function transform($studentGroup){
+
+
         return [
             'id' => $studentGroup['id'],
             'students' => (new StudentGroupRelationTransformer())->
-                transformCollection(StudentGroupRelation::where('student_group_id', $studentGroup['school_id'])->get()->toArray())
+                transformCollection($studentGroup['StudentGroupRelation']->toArray())
             ,
             'school' => (new SchoolTransformer())->
-            transformCollection(School::where('id', $studentGroup['school_id'])->get()->toArray()),
+            transform($studentGroup['school']),
         ];
     }
 }

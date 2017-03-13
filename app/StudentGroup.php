@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class StudentGroup extends Model{
 
+    protected $table = 'student_groups';
     protected $fillable = [
         'class_initial',
         'level',
@@ -20,9 +21,13 @@ class StudentGroup extends Model{
     public function students(){
         return $this->belongsToMany('App\Student');
     }
-
     public function courses(){
         return $this->hasMany('App\Course');
     }
-
+    public function studentGroupRelation(){
+        return $this->hasMany('App\studentGroupRelation');
+    }
+    public function school(){
+        return $this->belongsTo('App\School');
+    }    
 }

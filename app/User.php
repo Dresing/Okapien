@@ -36,6 +36,9 @@ class User extends Authenticatable
     public function courses(){
         return $this->hasMany('App\CourseAdministration', 'user_id', 'id');
     }
+     public function school(){
+        return $this->belongsTo('App\School');
+    }   
 
     /**
      * Get the model acosiated with the user e.g. Teacher/Student

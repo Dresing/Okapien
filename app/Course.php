@@ -18,9 +18,15 @@ class Course extends Model
     public function studentGroup(){
         return $this->belongsTo('App\StudentGroup');
     }
+    public function teacherGroup(){
+        return $this->belongsTo('App\teacherGroup');
+    }
     public function teacher(){
         return $this->belongsTo('App\Teacher');
     }
+    public function school(){
+        return $this->belongsTo('App\School');
+    }    
     public function subject(){
         return $this->belongsTo('App\Subject');
     }

@@ -22,8 +22,8 @@ class CourseSeeder extends Seeder
         foreach(range(1,Config::random($this->coursesNum)) as $index){
             $school_id = $faker->randomElement($schools->all());
             Course::create([
-                'student_group_id' => StudentGroup::where('school_id',1)->inRandomOrder()->get()->first()->id,
-                'teacher_group_id' => TeacherGroup::where('school_id',1)->inRandomOrder()->get()->first()->id,
+                'student_group_id' => StudentGroup::where('school_id',$school_id)->inRandomOrder()->get()->first()->id,
+                'teacher_group_id' => TeacherGroup::where('school_id',$school_id)->inRandomOrder()->get()->first()->id,
                 'subject_id' => Subject::get()->random(1)->first()->id,
                 'school_id' => $school_id,
             ]);

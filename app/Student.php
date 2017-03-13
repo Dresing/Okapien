@@ -17,7 +17,7 @@ class Student extends Model
     }
 
     public function studentGroups(){
-        return $this->belongsToMany('App\StudentGroup');
+        return $this->belongsToMany('App\StudentGroup', 'student_group_student');
 
     }
     public static function courses(Student $student){

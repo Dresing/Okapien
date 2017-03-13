@@ -23,7 +23,7 @@ class StudentTransformer extends Transformer{
     public function transform($student){
         return [
             'id' => $student['id'],
-            'user' => (new UserTransformer())->transform($student->user->toArray())
+            'user' => (new UserTransformer())->transform($student['user']),
 
         ];
     }

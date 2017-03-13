@@ -19,17 +19,19 @@ class CourseTransformer extends Transformer{
 
 
     /**
-     * @param $team
+     * @param $course
      * @return array
      */
-    public function transform($team){
+    public function transform($course){
+
+      //dd($course);
 
         return [
-            'id' => $team['id'],
-            'student_group' => (new StudentGroupTransformer())->transform(StudentGroup::find($team['student_group_id'])),
-            'teacher_group' => (new TeacherGroupTransformer())->transform(TeacherGroup::find($team['teacher_group_id'])),
-            'subject' => (new SubjectTransformer())->transform(Subject::find($team['subject_id'])),
-            'school' => (new SchoolTransformer())->transform(School::find($team['school_id'])),
+            'id' => $course['id'],
+            'student_group' => (new StudentGroupTransformer())->transform($course['StudentGroup']),
+            'teacher_group' => (new TeacherGroupTransformer())->transform($course['TeacherGroup']),
+            'subject' => (new SubjectTransformer())->transform(Subject::find($course['Subject'])),
+            'school' => (new SchoolTransformer())->transform(School::find($course['School'])),
         ];
     }
 }

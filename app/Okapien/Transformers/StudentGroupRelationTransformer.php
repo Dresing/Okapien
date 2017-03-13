@@ -23,8 +23,8 @@ class StudentGroupRelationTransformer extends Transformer{
     public function transform($studentGroupRelation){
 
         return [
-            'student' => $student = (new StudentTransformer)->transform(Student::find($studentGroupRelation['student_id']))
-            ,
+            'student' => $student = (new StudentTransformer)->transform($studentGroupRelation['student'])
+            
 
         ];
     }

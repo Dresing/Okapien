@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use App\Okapien\Conditionals\PrivilegeConditional;
+use App\Okapien\StringFunctions\PrivilegeLookup;
 
 class AppServiceProvider extends ServiceProvider
 {
