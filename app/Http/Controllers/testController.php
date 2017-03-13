@@ -30,7 +30,7 @@ class testController extends APIController{
 
     public function index(){
 
-        //$id = Auth::user()->userable->id;
+        $userable = Auth::user()->userable;
 
         //Run Authentication
        $authenticated = Privilege::check([
@@ -50,12 +50,16 @@ class testController extends APIController{
                 'TeacherGroup.TeacherGroupRelation.Teacher.User.School',
                 'TeacherGroup.School',
                 'Subject', 
-                'School')->where(function($query) {
+                'School')->where(function($query) use ($userable) {
+
                     if(Auth::user()->isType('Teacher')){
-                        $query->whereIn('teacher_group_id', Auth::user()->userable->teacherGroups);
+
+                        $query->whereIn('teacher_group_id', $userable->teacherGroups);
+
                     }
                     elseif(Auth::user()->isType('Student')){
-                        $query->whereIn('student_group_id', Auth::user()->userable->studentGroups);
+
+                        $query->whereIn('student_group_id', $userable->studentGroups);
                     }
                 })->paginate($this->getLimit());
 
